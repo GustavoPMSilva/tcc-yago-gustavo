@@ -12,7 +12,9 @@ export function useAuth() {
 const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(localStorage.getItem("@GeProFi:user"));
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("@GeProFi:user"))
+  );
 
   async function login(username, password) {
     const body = { username: username, password: password };
@@ -23,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const user = data.user;
     api.defaults.headers.Authorization = `Bearer ${token}`;
     localStorage.setItem("@GeProFi:token", token);
-    localStorage.setItem("@GeProFi:user", user);
+    localStorage.setItem("@GeProFi:user", JSON.stringify(user));
     setUser(user);
   }
 
