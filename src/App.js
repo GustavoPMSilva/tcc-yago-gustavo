@@ -7,7 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
 import FieldOfInterestPage from "./pages/FieldOfInterestPage";
 import UserPage from "./pages/UserPage";
-import ProjectPage from "./pages/ProjectPage";
+import ProjectPage from "./pages/project";
 
 function App() {
   return (
