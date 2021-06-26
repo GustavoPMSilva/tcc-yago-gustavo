@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 export const api = Axios.create({
-  baseURL: "http://localhost:8080/api/v1/",
+  baseURL: "https://geprofi-back.herokuapp.com/api/v1/",
   headers: {
     Accept: "application/json",
     Authorization: "Bearer " + localStorage.getItem("@GeProFi:token"),
