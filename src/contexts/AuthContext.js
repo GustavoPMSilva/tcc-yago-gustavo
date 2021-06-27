@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     const body = { username: username, password: password };
     const response = await api.post("/auth", body);
     const data = response.data;
-    console.log(data);
     const token = data.accessToken;
     const user = data.user;
     api.defaults.headers.Authorization = `Bearer ${token}`;

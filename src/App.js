@@ -8,6 +8,8 @@ import HomePage from "./pages/HomePage";
 import FieldOfInterestPage from "./pages/FieldOfInterestPage";
 import UserPage from "./pages/UserPage";
 import ProjectPage from "./pages/project";
+import InvitePage from "./pages/InvitePage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -33,6 +35,12 @@ function App() {
             </Route>
             <Route path="/project/:id">
               <ProjectPage />
+            </Route>
+            <Route path="/invite">
+              <InvitePage />
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
             </Route>
             <Route>
               <NotFoundPage />

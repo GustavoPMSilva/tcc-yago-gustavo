@@ -9,16 +9,16 @@ export const api = Axios.create({
 });
 
 export const apiGet = async (url, callback) => {
-  const resposta = await api.get(url);
-  callback(resposta.data);
+  const response = await api.get(url);
+  callback(response.data);
 };
 
 export const apiPost = async (url, body, callback) => {
-  const resposta = await api.post(url, body);
-  callback(resposta.data);
+  const response = await api.post(url, body);
+  callback(response.data);
 };
 
 export const apiPut = async (url, body, callback) => {
-  const resposta = await api.put(url, body);
-  callback(resposta.data);
+  const response = await api.put(url, body);
+  callback(response.data);
 };

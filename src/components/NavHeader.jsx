@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function NavHeader() {
-  const { signed, logout } = useAuth();
+  const { signed, user, logout } = useAuth();
   const history = useHistory();
 
   function doLogout() {
@@ -20,6 +20,16 @@ function NavHeader() {
       return (
         <div>
           <Link to="/login">Login</Link>
+        </div>
+      );
+    }
+  }
+
+  function showInviteLink() {
+    if (signed && user.userType === "TEACHER") {
+      return (
+        <div>
+          <Link to="/invite">Convidar</Link>
         </div>
       );
     }
@@ -42,6 +52,7 @@ function NavHeader() {
         <Link to="/">Home</Link>
       </div>
       {showLoginLink()}
+      {showInviteLink()}
       <div>
         <Link to="/public">Área Pública</Link>
       </div>
