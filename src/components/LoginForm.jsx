@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 
-function LoginForm({ onSubmitClicked }) {
+function LoginForm({ onSubmitClicked, error, helperText }) {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -20,6 +20,8 @@ function LoginForm({ onSubmitClicked }) {
         type="email"
         variant="outlined"
         margin="normal"
+        error={error}
+        helperText={helperText}
         value={email}
         onChange={(event) => {
           setEmail(event.target.value);
@@ -34,6 +36,8 @@ function LoginForm({ onSubmitClicked }) {
         type="password"
         variant="outlined"
         margin="normal"
+        error={error}
+        helperText={helperText}
         value={pass}
         onChange={(event) => {
           setPass(event.target.value);
