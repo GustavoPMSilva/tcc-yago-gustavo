@@ -18,7 +18,6 @@ function ProjectPage() {
 
   useEffect(() => {
     function onProjectLoaded(data) {
-      console.log(data);
       setProject(data);
       setLoading(false);
     }

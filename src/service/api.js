@@ -18,3 +18,8 @@ export const apiPost = async (url, body, callback) => {
   const resposta = await api.post(url, body);
   callback(resposta.data);
 };
+
+export const apiPut = async (url, body, callback) => {
+  const resposta = await api.put(url, body);
+  callback(resposta.data);
+};
