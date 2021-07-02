@@ -44,13 +44,7 @@ function UserForm({ user, buttonText, onSubmit }) {
   function showTeacherFields() {
     return (
       <>
-        <Textfield
-          id="siape"
-          label="SIAPE"
-          value={siape}
-          onChange={setSiape}
-          required
-        />
+        <Textfield id="siape" label="SIAPE" value={siape} onChange={setSiape} />
         <Textfield
           id="title"
           label="Título"
