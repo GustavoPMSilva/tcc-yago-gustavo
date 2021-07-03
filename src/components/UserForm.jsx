@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import Textfield from "./Textfield";
+import GpfTextField from "./core/GpfTextfield";
 import { useState } from "react";
 
 function UserForm({ user, buttonText, onSubmit }) {
@@ -30,7 +30,7 @@ function UserForm({ user, buttonText, onSubmit }) {
   function showStudentFields() {
     return (
       <>
-        <Textfield
+        <GpfTextField
           id="dre"
           label="DRE"
           value={dre}
@@ -44,21 +44,26 @@ function UserForm({ user, buttonText, onSubmit }) {
   function showTeacherFields() {
     return (
       <>
-        <Textfield id="siape" label="SIAPE" value={siape} onChange={setSiape} />
-        <Textfield
+        <GpfTextField
+          id="siape"
+          label="SIAPE"
+          value={siape}
+          onChange={setSiape}
+        />
+        <GpfTextField
           id="title"
           label="Título"
           value={title}
           onChange={setTitle}
         />
-        <Textfield
+        <GpfTextField
           id="position"
           label="Posição"
           value={position}
           onChange={setPosition}
         />
-        <Textfield id="room" label="Sala" value={room} onChange={setRoom} />
-        <Textfield
+        <GpfTextField id="room" label="Sala" value={room} onChange={setRoom} />
+        <GpfTextField
           id="user_profile"
           label="Página pessoal"
           value={userProfile}
@@ -89,14 +94,14 @@ function UserForm({ user, buttonText, onSubmit }) {
         onSubmit(user);
       }}
     >
-      <Textfield
+      <GpfTextField
         id="name"
         label="Nome"
         value={name}
         onChange={setName}
         required
       />
-      <Textfield
+      <GpfTextField
         id="email"
         label="Email"
         type="email"
@@ -104,27 +109,27 @@ function UserForm({ user, buttonText, onSubmit }) {
         onChange={setEmail}
         required
       />
-      <Textfield
+      <GpfTextField
         id="gender"
         label="Gênero"
         value={gender}
         onChange={setGender}
         required
       />
-      <Textfield
+      <GpfTextField
         id="lattes"
         label="Lattes"
         value={lattes}
         onChange={setLattes}
       />
-      <Textfield
+      <GpfTextField
         id="course"
         label="Curso"
         value={course}
         onChange={setCourse}
         required
       />
-      <Textfield
+      <GpfTextField
         id="origin"
         label="Local de origem"
         value={origin}
@@ -132,7 +137,7 @@ function UserForm({ user, buttonText, onSubmit }) {
         required
       />
       {showFieldsByUserType()}
-      <Textfield
+      <GpfTextField
         id="password"
         label="Senha"
         type="password"
@@ -140,7 +145,7 @@ function UserForm({ user, buttonText, onSubmit }) {
         onChange={setPassword}
         required
       />
-      <Textfield
+      <GpfTextField
         id="password_confirmation"
         label="Confirmar senha"
         type="password"

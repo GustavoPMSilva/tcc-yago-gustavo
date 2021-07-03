@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Typography, Button, Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Textfield from "../Textfield";
+import { GpfSelect, GpfTextField } from "../core";
 import { apiPut } from "../../service/api";
+import { ProjectStatus } from "../../models/project";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -43,35 +44,36 @@ function TeacherProjectView({ project }) {
           saveChanges();
         }}
       >
-        <Textfield
+        <GpfTextField
           id="title"
           label="Título"
           value={title}
           onChange={setTitle}
           required
         />
-        <Textfield
+        <GpfTextField
           id="subject"
           label="Tema"
           value={subject}
           onChange={setSubject}
           required
         />
-        <Textfield
+        <GpfTextField
           id="description"
           label="Resumo"
           value={description}
           onChange={setDescription}
           rows={10}
         />
-        <Textfield
+        <GpfSelect
           id="status"
           label="Estado"
+          options={ProjectStatus}
           value={status}
           onChange={setStatus}
           required
         />
-        <Textfield
+        <GpfTextField
           id="keywords"
           label="Palavras-chave"
           value={keywords}

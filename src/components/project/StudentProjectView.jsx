@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Button, Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Textfield from "../Textfield";
+import { GpfTextField } from "../core";
 import { apiPut } from "../../service/api";
 
 function Alert(props) {
@@ -41,28 +41,28 @@ function StudentProjectView({ project }) {
           saveChanges();
         }}
       >
-        <Textfield
+        <GpfTextField
           id="title"
           label="Título"
           value={title}
           onChange={setTitle}
           required
         />
-        <Textfield
+        <GpfTextField
           id="subject"
           label="Tema"
           value={subject}
           onChange={setSubject}
           required
         />
-        <Textfield
+        <GpfTextField
           id="description"
           label="Resumo"
           value={description}
           onChange={setDescription}
           rows={10}
         />
-        <Textfield
+        <GpfTextField
           id="keywords"
           label="Palavras-chave"
           value={keywords}

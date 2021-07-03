@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-function Textfield({ id, label, value, onChange, type, required, rows }) {
+function GpfTextField({ id, label, value, onChange, type, required, rows }) {
   return (
     <TextField
       id={id}
@@ -23,4 +23,4 @@ function Textfield({ id, label, value, onChange, type, required, rows }) {
   );
 }
 
-export default Textfield;
+export default GpfTextField;

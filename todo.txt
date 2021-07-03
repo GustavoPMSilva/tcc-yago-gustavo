@@ -1,0 +1,28 @@
+OK - Página do projeto:
+    Assunto -> tema do projeto
+    Descrição -> resumo (não obrigatório)
+    Palavras-chave (não obrigatório)
+    Aluno também pode editar
+
+Área pública:
+    Ver projetos finalizados
+
+Loadings
+
+Snackbar
+    Erro
+    Sucesso
+
+Adicionar homepage das paradas que não têm referência.
+
+FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+OK - Anexos (Diagramas, modelo lógico, etc)
+
+OK - Organização de texto
+    3. Metodologias (Back e Front)
+    4. Usabilidade
+    5. Conclusão e Trabalhos Futuros
+    6. Referências
+
+OK - ANEXOS
