@@ -14,7 +14,7 @@ function PublicPage() {
       setLoading(false);
     }
 
-    apiGet("/field", onListLoaded);
+    apiGet("public/field", onListLoaded);
   }, [setFieldOfInterestList, setLoading]);
 
   return (

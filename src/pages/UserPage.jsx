@@ -10,7 +10,7 @@ function UserPage() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    apiGet(`user/${id}`, setUser).catch(() => {
+    apiGet(`public/user/${id}`, setUser).catch(() => {
       history.push("/404");
     });
   }, [id, setUser, history]);

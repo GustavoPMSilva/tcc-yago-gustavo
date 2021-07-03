@@ -17,7 +17,7 @@ function FieldOfInterestPage() {
       setLoading(false);
     }
 
-    apiGet(`/field/${id}/users`, onListLoaded).catch(() => {
+    apiGet(`public/field/${id}/users`, onListLoaded).catch(() => {
       history.push("/404");
     });
   }, [id, setFieldOfInterestUserList, setLoading, history]);
