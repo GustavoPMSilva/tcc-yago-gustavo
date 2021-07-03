@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-function Textfield({ id, label, value, onChange, type, required }) {
+function Textfield({ id, label, value, onChange, type, required, rows }) {
   return (
     <TextField
       id={id}
@@ -17,6 +17,8 @@ function Textfield({ id, label, value, onChange, type, required }) {
       }}
       fullWidth
       required={required || false}
+      multiline={rows ? true : false}
+      rows={rows || 1}
     />
   );
 }

@@ -1,7 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import { Typography, TextField, Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Typography, Button, Snackbar } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+import Textfield from "../Textfield";
 import { apiPut } from "../../service/api";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function TeacherProjectView({ project }) {
   const [title, setTitle] = useState(project.title);
@@ -9,9 +14,14 @@ function TeacherProjectView({ project }) {
   const [description, setDescription] = useState(project.description);
   const [status, setStatus] = useState(project.status);
   const [keywords, setKeywords] = useState(project.keywords);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (event, reason) => {
+    setOpen(false);
+  };
 
   function onChangesSaved() {
-    window.location.reload();
+    setOpen(true);
   }
 
   function saveChanges() {
@@ -25,88 +35,61 @@ function TeacherProjectView({ project }) {
   }
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        saveChanges();
-      }}
-    >
-      <TextField
-        id="title"
-        name="title"
-        label="Título"
-        variant="outlined"
-        margin="normal"
-        value={title}
-        onChange={(event) => {
+    <>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
           event.stopPropagation();
-          setTitle(event.target.value);
+          saveChanges();
         }}
-        required
-        fullWidth
-      />
-      <TextField
-        id="subject"
-        name="subject"
-        label="Assunto"
-        variant="outlined"
-        margin="normal"
-        value={subject}
-        onChange={(event) => {
-          event.stopPropagation();
-          setSubject(event.target.value);
-        }}
-        required
-        fullWidth
-      />
-      <TextField
-        id="description"
-        name="description"
-        label="Descrição"
-        variant="outlined"
-        margin="normal"
-        value={description}
-        onChange={(event) => {
-          event.stopPropagation();
-          setDescription(event.target.value);
-        }}
-        required
-        fullWidth
-      />
-      <TextField
-        id="status"
-        name="status"
-        label="Estado"
-        variant="outlined"
-        margin="normal"
-        value={status}
-        onChange={(event) => {
-          event.stopPropagation();
-          setStatus(event.target.value);
-        }}
-        required
-        fullWidth
-      />
-      <TextField
-        id="keywords"
-        name="keywords"
-        label="Palavras-chave"
-        variant="outlined"
-        margin="normal"
-        value={keywords}
-        onChange={(event) => {
-          event.stopPropagation();
-          setKeywords(event.target.value);
-        }}
-        required
-        fullWidth
-      />
-      <Typography variant="body1">Criado em: {project.registerDate}</Typography>
-      <Button variant="contained" color="primary" type="submit" fullWidth>
-        Salvar
-      </Button>
-    </form>
+      >
+        <Textfield
+          id="title"
+          label="Título"
+          value={title}
+          onChange={setTitle}
+          required
+        />
+        <Textfield
+          id="subject"
+          label="Tema"
+          value={subject}
+          onChange={setSubject}
+          required
+        />
+        <Textfield
+          id="description"
+          label="Resumo"
+          value={description}
+          onChange={setDescription}
+          rows={10}
+        />
+        <Textfield
+          id="status"
+          label="Estado"
+          value={status}
+          onChange={setStatus}
+          required
+        />
+        <Textfield
+          id="keywords"
+          label="Palavras-chave"
+          value={keywords}
+          onChange={setKeywords}
+        />
+        <Typography variant="body1">
+          Criado em: {project.registerDate}
+        </Typography>
+        <Button variant="contained" color="primary" type="submit" fullWidth>
+          Salvar
+        </Button>
+      </form>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Dados salvos com sucesso
+        </Alert>
+      </Snackbar>
+    </>
   );
 }
 
