@@ -1,3 +1,4 @@
 import ProjectPage from "./ProjectPage";
+import PublicProjectPage from "./PublicProjectPage";
 
-export default ProjectPage;
+export { ProjectPage, PublicProjectPage };

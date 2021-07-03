@@ -1,11 +1,20 @@
-import React from "react";
-import { Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, Menu, MenuItem } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function NavHeader() {
   const { signed, user, logout } = useAuth();
   const history = useHistory();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   function doLogout() {
     logout(onLogout);
@@ -54,7 +63,22 @@ function NavHeader() {
       {showLoginLink()}
       {showInviteLink()}
       <div>
-        <Link to="/public">Área Pública</Link>
+        <Button color="primary" onClick={handleClick}>
+          Área Pública
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link to="/public/fields">Áreas de Interesse</Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link to="/public/projects">Projetos Concluídos</Link>
+          </MenuItem>
+        </Menu>
       </div>
       {showLogoutButton()}
     </nav>
