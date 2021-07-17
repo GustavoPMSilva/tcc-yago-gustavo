@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Typography, Button, Snackbar } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Snackbar,
+  List,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import { GpfTextField } from "../core";
 import { apiPut } from "../../service/api";
@@ -30,6 +37,23 @@ function StudentProjectView({ project }) {
     project.keywords = keywords;
 
     apiPut(`project/${project.id}`, project, onChangesSaved);
+  }
+
+  function showUserList() {
+    return (
+      <>
+        <Typography variant="h3" component="h1" align="center">
+          Participantes
+        </Typography>
+        <List>
+          {project.userList.map((u) => (
+            <ListItem>
+              <ListItemText primary={u.name} />
+            </ListItem>
+          ))}
+        </List>
+      </>
+    );
   }
 
   return (
@@ -72,6 +96,7 @@ function StudentProjectView({ project }) {
         <Typography variant="body1">
           Criado em: {project.registerDate}
         </Typography>
+        {showUserList()}
         <Button variant="contained" color="primary" type="submit" fullWidth>
           Salvar
         </Button>

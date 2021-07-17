@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import { Typography, Button, Snackbar } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Snackbar,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import { GpfSelect, GpfTextField } from "../core";
 import { apiPut } from "../../service/api";
 import { ProjectStatus } from "../../models/project";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { useAuth } from "../../contexts/AuthContext";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 function TeacherProjectView({ project }) {
+  const { user } = useAuth();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
@@ -33,6 +45,43 @@ function TeacherProjectView({ project }) {
     project.keywords = keywords;
 
     apiPut(`project/${project.id}`, project, onChangesSaved);
+  }
+
+  function showUserList() {
+    var projectUser = project.userList.find((u) => {
+      return u.id === user.id;
+    });
+
+    return (
+      <>
+        <Typography variant="h3" component="h1" align="center">
+          Participantes
+        </Typography>
+        <List>
+          {project.userList.map((u) => (
+            <ListItem>
+              <ListItemText primary={u.name} />
+              {!projectUser.committee &&
+              !projectUser.coop &&
+              u.id !== projectUser.id ? (
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="delete">
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              ) : (
+                <></>
+              )}
+            </ListItem>
+          ))}
+          {!projectUser.committee && !projectUser.coop ? (
+            <ListItem></ListItem>
+          ) : (
+            <></>
+          )}
+        </List>
+      </>
+    );
   }
 
   return (
@@ -82,6 +131,7 @@ function TeacherProjectView({ project }) {
         <Typography variant="body1">
           Criado em: {project.registerDate}
         </Typography>
+        {showUserList()}
         <Button variant="contained" color="primary" type="submit" fullWidth>
           Salvar
         </Button>

@@ -7,7 +7,7 @@ import {
   TeacherProjectView,
 } from "../../components/project";
 import { apiGet } from "../../service/api";
-import { Container } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 
 function ProjectPage() {
   let history = useHistory();
@@ -18,6 +18,7 @@ function ProjectPage() {
 
   useEffect(() => {
     function onProjectLoaded(data) {
+      console.log(data);
       setProject(data);
       setLoading(false);
     }
@@ -29,6 +30,9 @@ function ProjectPage() {
 
   return (
     <Container component="article">
+      <Typography variant="h3" component="h1" align="center">
+        Projeto
+      </Typography>
       {loading ? (
         <p>Loading</p>
       ) : user.userType === "STUDENT" ? (

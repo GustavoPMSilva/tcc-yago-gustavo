@@ -1,8 +1,7 @@
 Área pública:
     Ver projetos finalizados (alterar query pra filtrar por finalizados)
 
-Criar projeto
-    Adicionar participantes
+Adicionar participantes no projeto
 
 Ata
 
@@ -13,6 +12,8 @@ Fazer context provider/hook
         Sucesso
 
 FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+OK Criar projeto
 
 OK - Página do projeto:
     Assunto -> tema do projeto
