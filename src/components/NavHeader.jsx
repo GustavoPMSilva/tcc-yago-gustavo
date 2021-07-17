@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { Button, Menu, MenuItem } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#FFFFFF",
+    },
+  },
+});
 
 function NavHeader() {
   const { signed, user, logout } = useAuth();
@@ -63,9 +73,11 @@ function NavHeader() {
       {showLoginLink()}
       {showInviteLink()}
       <div>
-        <Button color="primary" onClick={handleClick}>
-          Área Pública
-        </Button>
+        <ThemeProvider theme={theme}>
+          <Button color="primary" onClick={handleClick}>
+            Área Pública
+          </Button>
+        </ThemeProvider>
         <Menu
           anchorEl={anchorEl}
           keepMounted
