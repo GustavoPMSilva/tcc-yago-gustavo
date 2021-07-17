@@ -11,6 +11,7 @@ import UserPage from "./pages/UserPage";
 import { ProjectPage, PublicProjectPage } from "./pages/project";
 import InvitePage from "./pages/InvitePage";
 import RegisterPage from "./pages/RegisterPage";
+import { NewProjectPage } from "./pages/newproject";
 
 function App() {
   return (
@@ -31,17 +32,20 @@ function App() {
             <Route path="/public/projects">
               <PublicProjectsPage />
             </Route>
+            <Route path="/public/project/:id">
+              <PublicProjectPage />
+            </Route>
             <Route path="/field/:id/users">
               <FieldOfInterestPage />
             </Route>
             <Route path="/user/:id/fields">
               <UserPage />
             </Route>
+            <Route path="/newproject">
+              <NewProjectPage />
+            </Route>
             <Route path="/project/:id">
               <ProjectPage />
-            </Route>
-            <Route path="/public/project/:id">
-              <PublicProjectPage />
             </Route>
             <Route path="/invite">
               <InvitePage />

@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { Button, Menu, MenuItem } from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#FFFFFF",
-    },
-  },
-});
 
 function NavHeader() {
   const { signed, user, logout } = useAuth();
@@ -44,6 +34,16 @@ function NavHeader() {
     }
   }
 
+  function showNewProject() {
+    if (signed && user.userType === "TEACHER") {
+      return (
+        <div>
+          <Link to="/newproject">Novo projeto</Link>
+        </div>
+      );
+    }
+  }
+
   function showInviteLink() {
     if (signed && user.userType === "TEACHER") {
       return (
@@ -71,13 +71,12 @@ function NavHeader() {
         <Link to="/">Home</Link>
       </div>
       {showLoginLink()}
+      {showNewProject()}
       {showInviteLink()}
       <div>
-        <ThemeProvider theme={theme}>
-          <Button color="primary" onClick={handleClick}>
-            Área Pública
-          </Button>
-        </ThemeProvider>
+        <Button color="primary" onClick={handleClick}>
+          Área Pública
+        </Button>
         <Menu
           anchorEl={anchorEl}
           keepMounted
