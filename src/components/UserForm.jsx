@@ -29,15 +29,13 @@ function UserForm({ user, buttonText, onSubmit }) {
 
   function showStudentFields() {
     return (
-      <>
-        <GpfTextField
-          id="dre"
-          label="DRE"
-          value={dre}
-          onChange={setDre}
-          required
-        />
-      </>
+      <GpfTextField
+        id="dre"
+        label="DRE"
+        value={dre}
+        onChange={setDre}
+        required
+      />
     );
   }
 

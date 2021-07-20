@@ -8,22 +8,9 @@ import {
   TableCell,
   Table,
   TableHead,
-  LinearProgress,
 } from "@material-ui/core";
 
-function UserList({ userList, loading }) {
-  function showLoadingCell() {
-    if (loading) {
-      return (
-        <TableRow>
-          <TableCell colSpan={2}>
-            <LinearProgress />
-          </TableCell>
-        </TableRow>
-      );
-    }
-  }
-
+function UserList({ userList }) {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -42,7 +29,6 @@ function UserList({ userList, loading }) {
               <TableCell align="right">{user.userProfile}</TableCell>
             </TableRow>
           ))}
-          {showLoadingCell()}
         </TableBody>
       </Table>
     </TableContainer>

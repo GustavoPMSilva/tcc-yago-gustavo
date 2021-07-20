@@ -15,7 +15,7 @@ function LoginPage() {
     if (signed) {
       history.push("/");
     }
-  });
+  }, []);
 
   function onLoginSuccess() {
     history.push("/");

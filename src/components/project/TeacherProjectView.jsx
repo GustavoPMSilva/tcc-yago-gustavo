@@ -43,7 +43,7 @@ function TeacherProjectView({ project }) {
         </Typography>
         <List>
           {project.userList.map((u) => (
-            <ListItem>
+            <ListItem key={u.id}>
               <ListItemText primary={u.name} />
               {!projectUser.committee &&
               !projectUser.coop &&
@@ -69,58 +69,54 @@ function TeacherProjectView({ project }) {
   }
 
   return (
-    <>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          saveChanges();
-        }}
-      >
-        <GpfTextField
-          id="title"
-          label="Título"
-          value={title}
-          onChange={setTitle}
-          required
-        />
-        <GpfTextField
-          id="subject"
-          label="Tema"
-          value={subject}
-          onChange={setSubject}
-          required
-        />
-        <GpfTextField
-          id="description"
-          label="Resumo"
-          value={description}
-          onChange={setDescription}
-          rows={10}
-        />
-        <GpfSelect
-          id="status"
-          label="Estado"
-          options={ProjectStatus}
-          value={status}
-          onChange={setStatus}
-          required
-        />
-        <GpfTextField
-          id="keywords"
-          label="Palavras-chave"
-          value={keywords}
-          onChange={setKeywords}
-        />
-        <Typography variant="body1">
-          Criado em: {project.registerDate}
-        </Typography>
-        {showUserList()}
-        <Button variant="contained" color="primary" type="submit" fullWidth>
-          Salvar
-        </Button>
-      </form>
-    </>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        saveChanges();
+      }}
+    >
+      <GpfTextField
+        id="title"
+        label="Título"
+        value={title}
+        onChange={setTitle}
+        required
+      />
+      <GpfTextField
+        id="subject"
+        label="Tema"
+        value={subject}
+        onChange={setSubject}
+        required
+      />
+      <GpfTextField
+        id="description"
+        label="Resumo"
+        value={description}
+        onChange={setDescription}
+        rows={10}
+      />
+      <GpfSelect
+        id="status"
+        label="Estado"
+        options={ProjectStatus}
+        value={status}
+        onChange={setStatus}
+        required
+      />
+      <GpfTextField
+        id="keywords"
+        label="Palavras-chave"
+        value={keywords}
+        onChange={setKeywords}
+      />
+      <Typography variant="body1">Criado em: {project.registerDate}</Typography>
+      {showUserList()}
+      <Button variant="contained" color="primary" type="submit" fullWidth>
+        Salvar
+      </Button>
+    </form>
   );
 }
 

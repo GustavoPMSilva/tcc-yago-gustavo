@@ -10,12 +10,10 @@ function FieldOfInterestPage() {
   const { apiGet } = useApi();
   const { id } = useParams();
   const [fieldOfInterestUserList, setFieldOfInterestUserList] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     function onListLoaded(data) {
       setFieldOfInterestUserList(data);
-      setLoading(false);
     }
 
     function onError(error) {
@@ -23,14 +21,14 @@ function FieldOfInterestPage() {
     }
 
     apiGet(`public/field/${id}/users`, onListLoaded, onError);
-  }, [apiGet, id, setFieldOfInterestUserList, setLoading, history]);
+  }, []);
 
   return (
     <Container component="article">
       <Typography variant="h3" component="h1" align="center">
         Professores da Área de Interesse
       </Typography>
-      <UserList userList={fieldOfInterestUserList} loading={loading} />
+      <UserList userList={fieldOfInterestUserList} />
     </Container>
   );
 }

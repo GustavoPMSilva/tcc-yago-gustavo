@@ -14,7 +14,7 @@ function UserPage() {
     apiGet(`public/user/${id}`, setUser).catch(() => {
       history.push("/404");
     });
-  }, [apiGet, id, setUser, history]);
+  }, []);
 
   return <User user={user} />;
 }

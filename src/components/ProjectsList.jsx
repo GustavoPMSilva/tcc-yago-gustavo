@@ -9,23 +9,10 @@ import {
   Table,
   TableHead,
   TextField,
-  LinearProgress,
 } from "@material-ui/core";
 
-function ProjectsList({ projects, loading }) {
+function ProjectsList({ projects }) {
   const [search, setSearch] = useState("");
-
-  function showLoadingCell() {
-    if (loading) {
-      return (
-        <TableRow>
-          <TableCell colSpan={2}>
-            <LinearProgress />
-          </TableCell>
-        </TableRow>
-      );
-    }
-  }
 
   return (
     <TableContainer component={Paper}>
@@ -69,7 +56,6 @@ function ProjectsList({ projects, loading }) {
                 <TableCell align="right">{project.subject}</TableCell>
               </TableRow>
             ))}
-          {showLoadingCell()}
         </TableBody>
       </Table>
     </TableContainer>

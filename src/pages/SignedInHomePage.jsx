@@ -8,7 +8,6 @@ import {
   TableCell,
   Table,
   TableHead,
-  LinearProgress,
 } from "@material-ui/core";
 import { useApi } from "../contexts/ApiContext";
 
@@ -16,28 +15,14 @@ function SignedInHomePage() {
   const { apiGet } = useApi();
   const { user } = useApi();
   const [projectsList, setProjectsList] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     function onListLoaded(data) {
       setProjectsList(data);
-      setLoading(false);
     }
 
-    apiGet("user/projects", onListLoaded);
-  }, [apiGet, setProjectsList, setLoading]);
-
-  function showLoadingCell() {
-    if (loading) {
-      return (
-        <TableRow>
-          <TableCell colSpan={2}>
-            <LinearProgress />
-          </TableCell>
-        </TableRow>
-      );
-    }
-  }
+    apiGet("user/projects", onListLoaded, undefined);
+  }, []);
 
   return (
     <TableContainer component={Paper}>
@@ -57,7 +42,6 @@ function SignedInHomePage() {
               <TableCell align="right">{project.subject}</TableCell>
             </TableRow>
           ))}
-          {showLoadingCell()}
         </TableBody>
       </Table>
     </TableContainer>

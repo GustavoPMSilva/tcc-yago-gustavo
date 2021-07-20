@@ -28,7 +28,7 @@ function ProjectPage() {
     }
 
     apiGet(`project/${id}`, onProjectLoaded, onError);
-  }, [apiGet, id, setProject, setLoading, history]);
+  }, []);
 
   return (
     <Container component="article">

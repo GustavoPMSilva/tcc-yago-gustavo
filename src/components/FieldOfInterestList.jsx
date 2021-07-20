@@ -9,23 +9,10 @@ import {
   Table,
   TableHead,
   TextField,
-  LinearProgress,
 } from "@material-ui/core";
 
-function FieldOfInterestList({ fieldOfInterests, loading }) {
+function FieldOfInterestList({ fieldOfInterests }) {
   const [search, setSearch] = useState("");
-
-  function showLoadingCell() {
-    if (loading) {
-      return (
-        <TableRow>
-          <TableCell colSpan={2}>
-            <LinearProgress />
-          </TableCell>
-        </TableRow>
-      );
-    }
-  }
 
   return (
     <TableContainer component={Paper}>
@@ -67,7 +54,6 @@ function FieldOfInterestList({ fieldOfInterests, loading }) {
                 <TableCell align="right">{field.description}</TableCell>
               </TableRow>
             ))}
-          {showLoadingCell()}
         </TableBody>
       </Table>
     </TableContainer>

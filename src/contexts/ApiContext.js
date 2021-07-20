@@ -39,6 +39,7 @@ export const ApiProvider = ({ children }) => {
   const [errorSnackbar, __] = useSnackbar(errorOptions);
 
   async function doCall(call, callback, errorCallback) {
+    setLoading(true);
     call
       .then((response) => {
         setLoading(false);
@@ -58,17 +59,14 @@ export const ApiProvider = ({ children }) => {
   }
 
   async function apiGet(url, callback, errorCallback) {
-    setLoading(true);
     doCall(api.get(url), callback, errorCallback);
   }
 
   async function apiPost(url, body, callback, errorCallback) {
-    setLoading(true);
     doCall(api.post(url, body), callback, errorCallback);
   }
 
   async function apiPut(url, body, callback, errorCallback) {
-    setLoading(true);
     doCall(api.put(url, body), callback, errorCallback);
   }
 

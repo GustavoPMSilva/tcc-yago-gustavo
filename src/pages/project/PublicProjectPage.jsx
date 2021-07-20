@@ -23,7 +23,7 @@ function PublicProjectPage() {
     }
 
     apiGet(`public/project/${id}`, onProjectLoaded, onError);
-  }, [apiGet, id, setProject, setLoading, history]);
+  }, []);
 
   return (
     <Container component="article">

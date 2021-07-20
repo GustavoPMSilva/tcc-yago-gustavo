@@ -22,7 +22,7 @@ function RegisterPage() {
     }
 
     apiGet(`user?token=${token}`, onUserLoaded, onError);
-  }, [apiGet, history, token, setUser]);
+  }, []);
 
   function onSubmitDone() {
     history.push("/");
