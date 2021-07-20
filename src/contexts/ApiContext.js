@@ -11,6 +11,20 @@ const api = Axios.create({
   },
 });
 
+const successOptions = {
+  style: {
+    backgroundColor: "#5AAF4B",
+    color: "white",
+  },
+};
+
+const errorOptions = {
+  style: {
+    backgroundColor: "#EA402F",
+    color: "white",
+  },
+};
+
 export function useApi() {
   const context = useContext(ApiContext);
 
@@ -21,13 +35,14 @@ const ApiContext = React.createContext({});
 
 export const ApiProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [openSnackbar, closeSnackbar] = useSnackbar();
+  const [successSnackbar, _] = useSnackbar(successOptions);
+  const [errorSnackbar, __] = useSnackbar(errorOptions);
 
   async function doCall(call, callback, errorCallback) {
     call
       .then((response) => {
         setLoading(false);
-        openSnackbar("Sucesso");
+        successSnackbar("Sucesso");
         if (callback !== undefined) {
           callback(response.data);
         }
@@ -35,7 +50,7 @@ export const ApiProvider = ({ children }) => {
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        openSnackbar("Erro");
+        errorSnackbar("Erro");
         if (errorCallback !== undefined) {
           errorCallback(error);
         }
@@ -76,14 +91,14 @@ export const ApiProvider = ({ children }) => {
       .post("/auth", { username: username, password: password })
       .then((response) => {
         setLoading(false);
-        openSnackbar("Sucesso");
+        successSnackbar("Sucesso");
         onLoginSuccess(response.data);
         callback(response.data);
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
-        openSnackbar("Erro");
+        errorSnackbar("Erro");
         errorCallback(error);
       });
   }
