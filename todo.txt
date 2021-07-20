@@ -5,13 +5,13 @@ Adicionar participantes no projeto
 
 Ata
 
-Fazer context provider/hook
+FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+OK Fazer context provider/hook
     Loadings
     Snackbar
         Erro
         Sucesso
-
-FUTURO - Adicionar manual - Como utilizar a plataforma.
 
 OK Criar projeto
 
