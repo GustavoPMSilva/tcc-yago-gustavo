@@ -1,9 +1,9 @@
 import React from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { useApi } from "../contexts/ApiContext";
 import SignedInHomePage from "./SignedInHomePage";
 
 function HomePage() {
-  const { signed } = useAuth();
+  const { signed } = useApi();
 
   return <>{signed ? <SignedInHomePage /> : <p>Home</p>}</>;
 }

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
 import {
   StudentProjectView,
   TeacherProjectView,
 } from "../../components/project";
 import { apiGet } from "../../service/api";
 import { Container, Typography } from "@material-ui/core";
+import { useApi } from "../../contexts/ApiContext";
 
 function ProjectPage() {
   let history = useHistory();
   const { id } = useParams();
-  const { user } = useAuth();
+  const { user } = useApi();
   const [project, setProject] = useState({});
   const [loading, setLoading] = useState(true);
 

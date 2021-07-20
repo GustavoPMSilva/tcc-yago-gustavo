@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useApi } from "../contexts/ApiContext";
 
 function NavHeader() {
-  const { signed, user, logout } = useAuth();
+  const { signed, user, logout } = useApi();
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
 

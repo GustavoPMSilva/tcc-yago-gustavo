@@ -2,40 +2,24 @@ import React, { useState } from "react";
 import {
   Typography,
   Button,
-  Snackbar,
   List,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
 } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
 import { GpfSelect, GpfTextField } from "../core";
-import { apiPut } from "../../service/api";
 import { ProjectStatus } from "../../models/project";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { useAuth } from "../../contexts/AuthContext";
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import { useApi } from "../../contexts/ApiContext";
 
 function TeacherProjectView({ project }) {
-  const { user } = useAuth();
+  const { user, apiPut } = useApi();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
   const [status, setStatus] = useState(project.status);
   const [keywords, setKeywords] = useState(project.keywords);
-  const [open, setOpen] = useState(false);
-
-  const handleClose = (event, reason) => {
-    setOpen(false);
-  };
-
-  function onChangesSaved() {
-    setOpen(true);
-  }
 
   function saveChanges() {
     project.title = title;
@@ -44,7 +28,7 @@ function TeacherProjectView({ project }) {
     project.status = status;
     project.keywords = keywords;
 
-    apiPut(`project/${project.id}`, project, onChangesSaved);
+    apiPut(`project/${project.id}`, project);
   }
 
   function showUserList() {
@@ -136,11 +120,6 @@ function TeacherProjectView({ project }) {
           Salvar
         </Button>
       </form>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          Dados salvos com sucesso
-        </Alert>
-      </Snackbar>
     </>
   );
 }

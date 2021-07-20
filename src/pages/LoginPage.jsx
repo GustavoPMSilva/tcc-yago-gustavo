@@ -2,25 +2,34 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Typography } from "@material-ui/core";
 import LoginForm from "../components/LoginForm";
-import { useAuth } from "../contexts/AuthContext";
+import { useApi } from "../contexts/ApiContext";
+import { useEffect } from "react";
 
 function LoginPage() {
-  const { signed, login } = useAuth();
+  const { signed, login } = useApi();
   let history = useHistory();
   const [error, setError] = useState(false);
   const [helperText, setHelperText] = useState("");
 
-  if (signed) {
+  useEffect(() => {
+    if (signed) {
+      history.push("/");
+    }
+  });
+
+  function onLoginSuccess() {
     history.push("/");
+  }
+
+  function onLoginFail() {
+    setError(true);
+    setHelperText("Email ou senha inválidos");
   }
 
   function doLogin(email, password) {
     setError(false);
     setHelperText("");
-    login(email, password).catch(() => {
-      setError(true);
-      setHelperText("Email ou senha inválidos");
-    });
+    login(email, password, onLoginSuccess, onLoginFail);
   }
 
   return (

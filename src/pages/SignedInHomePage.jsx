@@ -11,10 +11,10 @@ import {
   LinearProgress,
 } from "@material-ui/core";
 import { apiGet } from "../service/api";
-import { useAuth } from "../contexts/AuthContext";
+import { useApi } from "../contexts/ApiContext";
 
 function SignedInHomePage() {
-  const { user } = useAuth();
+  const { user } = useApi();
   const [projectsList, setProjectsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
