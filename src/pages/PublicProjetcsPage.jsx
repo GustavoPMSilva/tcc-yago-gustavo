@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Container, Typography } from "@material-ui/core";
 import ProjectsList from "../components/ProjectsList";
 import { useEffect } from "react";
-import { apiGet } from "../service/api";
+import { useApi } from "../contexts/ApiContext";
 
 function PublicProjectsPage() {
+  const { apiGet } = useApi();
   const [projectsList, setProjectsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +16,7 @@ function PublicProjectsPage() {
     }
 
     apiGet("public/project", onListLoaded);
-  }, [setProjectsList, setLoading]);
+  }, [apiGet, setProjectsList, setLoading]);
 
   return (
     <Container component="article">

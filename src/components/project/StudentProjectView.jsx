@@ -2,33 +2,19 @@ import React, { useState } from "react";
 import {
   Typography,
   Button,
-  Snackbar,
   List,
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
 import { GpfTextField } from "../core";
-import { apiPut } from "../../service/api";
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+import { useApi } from "../../contexts/ApiContext";
 
 function StudentProjectView({ project }) {
+  const { apiPut } = useApi();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
   const [keywords, setKeywords] = useState(project.keywords);
-  const [open, setOpen] = useState(false);
-
-  const handleClose = (event, reason) => {
-    setOpen(false);
-  };
-
-  function onChangesSaved() {
-    setOpen(true);
-  }
 
   function saveChanges() {
     project.title = title;
@@ -36,7 +22,7 @@ function StudentProjectView({ project }) {
     project.description = description;
     project.keywords = keywords;
 
-    apiPut(`project/${project.id}`, project, onChangesSaved);
+    apiPut(`project/${project.id}`, project);
   }
 
   function showUserList() {
@@ -101,11 +87,6 @@ function StudentProjectView({ project }) {
           Salvar
         </Button>
       </form>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          Dados salvos com sucesso
-        </Alert>
-      </Snackbar>
     </>
   );
 }

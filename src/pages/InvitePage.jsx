@@ -10,9 +10,10 @@ import {
   FormControlLabel,
   Radio,
 } from "@material-ui/core";
-import { apiPost } from "../service/api";
+import { useApi } from "../contexts/ApiContext";
 
 function InvitePage() {
+  const { apiPost } = useApi();
   const [email, setEmail] = useState("");
   const [userType, setUserType] = useState("");
 

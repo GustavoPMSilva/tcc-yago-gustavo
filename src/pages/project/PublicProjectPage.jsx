@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { apiGet } from "../../service/api";
+import { useApi } from "../../contexts/ApiContext";
 import { Container, Typography } from "@material-ui/core";
 import UserList from "../../components/UserList";
 
 function PublicProjectPage() {
+  const { apiGet } = useApi();
   let history = useHistory();
   const { id } = useParams();
   const [project, setProject] = useState({});
@@ -17,10 +18,12 @@ function PublicProjectPage() {
       setLoading(false);
     }
 
-    apiGet(`public/project/${id}`, onProjectLoaded).catch(() => {
+    function onError(error) {
       history.push("/404");
-    });
-  }, [id, setProject, setLoading, history]);
+    }
+
+    apiGet(`public/project/${id}`, onProjectLoaded, onError);
+  }, [apiGet, id, setProject, setLoading, history]);
 
   return (
     <Container component="article">

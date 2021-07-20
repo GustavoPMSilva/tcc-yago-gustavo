@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import { GpfTextField } from "../../components/core";
-import { apiPost } from "../../service/api";
+import { useApi } from "../../contexts/ApiContext";
 import { Container, Typography } from "@material-ui/core";
 import { useHistory } from "react-router";
 
@@ -11,6 +11,7 @@ function Alert(props) {
 }
 
 function NewProjectPage() {
+  const { apiPost } = useApi();
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");

@@ -3,10 +3,11 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { Container, Typography } from "@material-ui/core";
 import UserList from "../components/UserList";
-import { apiGet } from "../service/api";
+import { useApi } from "../contexts/ApiContext";
 
 function FieldOfInterestPage() {
   let history = useHistory();
+  const { apiGet } = useApi();
   const { id } = useParams();
   const [fieldOfInterestUserList, setFieldOfInterestUserList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,10 +18,12 @@ function FieldOfInterestPage() {
       setLoading(false);
     }
 
-    apiGet(`public/field/${id}/users`, onListLoaded).catch(() => {
+    function onError(error) {
       history.push("/404");
-    });
-  }, [id, setFieldOfInterestUserList, setLoading, history]);
+    }
+
+    apiGet(`public/field/${id}/users`, onListLoaded, onError);
+  }, [apiGet, id, setFieldOfInterestUserList, setLoading, history]);
 
   return (
     <Container component="article">

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "../hooks/UseQuery";
-import { apiGet, apiPut } from "../service/api";
+import { useApi } from "../contexts/ApiContext";
 import { Container, Typography } from "@material-ui/core";
 import UserForm from "../components/UserForm";
 import { useHistory } from "react-router-dom";
 
 function RegisterPage() {
+  const { apiGet, apiPut } = useApi();
   const query = useQuery();
   const history = useHistory();
   const token = query.get("token");
@@ -16,10 +17,12 @@ function RegisterPage() {
       setUser(userList[0]);
     }
 
-    apiGet(`user?token=${token}`, onUserLoaded).catch(() => {
+    function onError(error) {
       history.push("/404");
-    });
-  }, [history, token, setUser]);
+    }
+
+    apiGet(`user?token=${token}`, onUserLoaded, onError);
+  }, [apiGet, history, token, setUser]);
 
   function onSubmitDone() {
     history.push("/");

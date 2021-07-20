@@ -5,11 +5,11 @@ import {
   StudentProjectView,
   TeacherProjectView,
 } from "../../components/project";
-import { apiGet } from "../../service/api";
-import { Container, Typography } from "@material-ui/core";
 import { useApi } from "../../contexts/ApiContext";
+import { Container, Typography } from "@material-ui/core";
 
 function ProjectPage() {
+  const { apiGet } = useApi();
   let history = useHistory();
   const { id } = useParams();
   const { user } = useApi();
@@ -23,10 +23,12 @@ function ProjectPage() {
       setLoading(false);
     }
 
-    apiGet(`project/${id}`, onProjectLoaded).catch(() => {
+    function onError(error) {
       history.push("/404");
-    });
-  }, [id, setProject, setLoading, history]);
+    }
+
+    apiGet(`project/${id}`, onProjectLoaded, onError);
+  }, [apiGet, id, setProject, setLoading, history]);
 
   return (
     <Container component="article">

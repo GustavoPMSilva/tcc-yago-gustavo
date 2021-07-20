@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Container, Typography } from "@material-ui/core";
 import FieldOfInterestList from "../components/FieldOfInterestList";
 import { useEffect } from "react";
-import { apiGet } from "../service/api";
+import { useApi } from "../contexts/ApiContext";
 
 function PublicPage() {
+  const { apiGet } = useApi();
   const [fieldOfInterestList, setFieldOfInterestList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +16,7 @@ function PublicPage() {
     }
 
     apiGet("public/field", onListLoaded);
-  }, [setFieldOfInterestList, setLoading]);
+  }, [apiGet, setFieldOfInterestList, setLoading]);
 
   return (
     <Container component="article">

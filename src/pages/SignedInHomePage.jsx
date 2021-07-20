@@ -10,10 +10,10 @@ import {
   TableHead,
   LinearProgress,
 } from "@material-ui/core";
-import { apiGet } from "../service/api";
 import { useApi } from "../contexts/ApiContext";
 
 function SignedInHomePage() {
+  const { apiGet } = useApi();
   const { user } = useApi();
   const [projectsList, setProjectsList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ function SignedInHomePage() {
     }
 
     apiGet("user/projects", onListLoaded);
-  }, [setProjectsList, setLoading]);
+  }, [apiGet, setProjectsList, setLoading]);
 
   function showLoadingCell() {
     if (loading) {
