@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "@material-ui/core/Button";
 import {
   AppBar,
@@ -34,16 +34,55 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
   const [search, setSearch] = useState("");
 
   const columns = [
-    { field: "name", headerName: "Nome", width: 400 },
-    { field: "email", headerName: "E-mail", width: 400 },
+    { field: "name", headerName: "Nome", flex: 3 },
+    { field: "email", headerName: "E-mail", flex: 3 },
     {
       field: "userType",
       headerName: "Tipo",
-      width: 200,
+      flex: 1,
       valueGetter: (params) => `${UserType[params.value] || ""}`,
     },
-    { field: "origin", headerName: "Origem", width: 400 },
+    { field: "origin", headerName: "Origem", flex: 2 },
+    {
+      field: "coop",
+      headerName: "Co-orientador",
+      type: "boolean",
+      editable: true,
+      flex: 1,
+    },
+    {
+      field: "committee",
+      headerName: "Banca",
+      type: "boolean",
+      editable: true,
+      flex: 1,
+    },
   ];
+
+  const handleEditCellChangeCommitted = useCallback(
+    ({ id, field, value, props }) => {
+      if (field === "coop") {
+        const coop = !value;
+        const updatedUserList = userList.map((row) => {
+          if (row.id === id) {
+            return { ...row, coop };
+          }
+          return row;
+        });
+        setUserList(updatedUserList);
+      } else if (field === "committee") {
+        const committee = !value;
+        const updatedUserList = userList.map((row) => {
+          if (row.id === id) {
+            return { ...row, committee };
+          }
+          return row;
+        });
+        setUserList(updatedUserList);
+      }
+    },
+    [userList]
+  );
 
   useEffect(() => {
     function onListLoaded(data) {
@@ -99,11 +138,11 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
           )}
           columns={columns}
           pageSize={10}
+          selectionModel={selectedUserId}
           onSelectionModelChange={(newSelectionModel) => {
-            console.log(newSelectionModel);
             setSelectedUserId(newSelectionModel);
           }}
-          selectionModel={selectedUserId}
+          onEditCellChangeCommitted={handleEditCellChangeCommitted}
           disableColumnFilter
         />
         <DialogActions>
@@ -119,7 +158,9 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
           <Button
             onClick={(event) => {
               event.stopPropagation();
-              handleClose(selectedUserId[0]);
+              handleClose({
+                user: userList.find((u) => u.id === selectedUserId[0]),
+              });
             }}
             color="primary"
             disabled={selectedUserId.length === 0}

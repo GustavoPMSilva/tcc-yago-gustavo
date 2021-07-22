@@ -28,14 +28,15 @@ function TeacherProjectView({ project }) {
     setOpen(true);
   };
 
-  const handleClose = (selectedId) => {
+  const handleClose = (data) => {
     setOpen(false);
-    if (selectedId != null) addUserToProject(selectedId);
+    if (data != null) addUserToProject(data.user);
   };
 
-  function addUserToProject(userId) {
-    let body = { committee: false, coop: false };
-    apiPost(`project/${project.id}/user/${userId}`, body, () => {
+  function addUserToProject(user) {
+    console.log(user);
+    let body = { committee: user.committee, coop: user.coop };
+    apiPost(`project/${project.id}/user/${user.id}`, body, () => {
       window.location.reload();
     });
   }
@@ -74,13 +75,14 @@ function TeacherProjectView({ project }) {
               !projectUser.coop &&
               u.id !== projectUser.id ? (
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon
-                      onClick={(event) => {
-                        event.preventDefault();
-                        removeUserFromProject(u);
-                      }}
-                    />
+                  <IconButton
+                    edge="end"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      removeUserFromProject(u);
+                    }}
+                  >
+                    <DeleteIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
               ) : (
