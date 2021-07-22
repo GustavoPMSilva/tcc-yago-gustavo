@@ -43,8 +43,8 @@ function ProjectsList({ projects }) {
           {projects
             .filter(
               (i) =>
-                i.title.toLowerCase().includes(search) ||
-                i.subject.toLowerCase().includes(search)
+                i.title.toLowerCase().includes(search.toLowerCase()) ||
+                i.subject.toLowerCase().includes(search.toLowerCase())
             )
             .map((project) => (
               <TableRow key={project.id}>

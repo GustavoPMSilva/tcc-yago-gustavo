@@ -12,6 +12,7 @@ import { GpfSelect, GpfTextField } from "../core";
 import { ProjectStatus } from "../../models/project";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useApi } from "../../contexts/ApiContext";
+import { AddParticipantToProject } from "../addparticipanttoproject";
 
 function TeacherProjectView({ project }) {
   const { user, apiPut } = useApi();
@@ -20,6 +21,17 @@ function TeacherProjectView({ project }) {
   const [description, setDescription] = useState(project.description);
   const [status, setStatus] = useState(project.status);
   const [keywords, setKeywords] = useState(project.keywords);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (selectedId) => {
+    setOpen(false);
+    if (selectedId != null) window.location.reload();
+  };
 
   function saveChanges() {
     project.title = title;
@@ -59,7 +71,17 @@ function TeacherProjectView({ project }) {
             </ListItem>
           ))}
           {!projectUser.committee && !projectUser.coop ? (
-            <ListItem></ListItem>
+            <ListItem>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleClickOpen}
+                fullWidth
+              >
+                Adicionar
+              </Button>
+              <AddParticipantToProject open={open} handleClose={handleClose} />
+            </ListItem>
           ) : (
             <></>
           )}

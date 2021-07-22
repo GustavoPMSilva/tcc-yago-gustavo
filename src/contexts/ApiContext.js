@@ -38,12 +38,12 @@ export const ApiProvider = ({ children }) => {
   const [successSnackbar, _] = useSnackbar(successOptions);
   const [errorSnackbar, __] = useSnackbar(errorOptions);
 
-  async function doCall(call, callback, errorCallback) {
+  async function doCall(call, callback, errorCallback, showSuccess) {
     setLoading(true);
     call
       .then((response) => {
         setLoading(false);
-        successSnackbar("Sucesso");
+        if (showSuccess) successSnackbar("Sucesso");
         if (callback !== undefined) {
           callback(response.data);
         }
@@ -59,15 +59,15 @@ export const ApiProvider = ({ children }) => {
   }
 
   async function apiGet(url, callback, errorCallback) {
-    doCall(api.get(url), callback, errorCallback);
+    doCall(api.get(url), callback, errorCallback, false);
   }
 
   async function apiPost(url, body, callback, errorCallback) {
-    doCall(api.post(url, body), callback, errorCallback);
+    doCall(api.post(url, body), callback, errorCallback, true);
   }
 
   async function apiPut(url, body, callback, errorCallback) {
-    doCall(api.put(url, body), callback, errorCallback);
+    doCall(api.put(url, body), callback, errorCallback, true);
   }
 
   const [user, setUser] = useState(

@@ -43,8 +43,8 @@ function FieldOfInterestList({ fieldOfInterests }) {
           {fieldOfInterests
             .filter(
               (i) =>
-                i.name.toLowerCase().includes(search) ||
-                i.description.toLowerCase().includes(search)
+                i.name.toLowerCase().includes(search.toLowerCase()) ||
+                i.description.toLowerCase().includes(search.toLowerCase())
             )
             .map((field) => (
               <TableRow key={field.id}>
