@@ -26,7 +26,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function AddParticipantToProject({ open, handleClose }) {
+function AddParticipantToProject({ open, handleClose, currentUserList }) {
   const classes = useStyles();
   const { apiGet } = useApi();
   const [userList, setUserList] = useState([]);
@@ -46,7 +46,11 @@ function AddParticipantToProject({ open, handleClose }) {
   ];
 
   useEffect(() => {
-    apiGet("user", setUserList);
+    function onListLoaded(data) {
+      setUserList(data.filter((i) => !currentUserList.includes(i.id)));
+    }
+
+    apiGet("user", onListLoaded);
   }, []);
 
   return (

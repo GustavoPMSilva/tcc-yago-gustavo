@@ -80,7 +80,11 @@ function TeacherProjectView({ project }) {
               >
                 Adicionar
               </Button>
-              <AddParticipantToProject open={open} handleClose={handleClose} />
+              <AddParticipantToProject
+                open={open}
+                handleClose={handleClose}
+                currentUserList={project.userList.map((u) => u.id)}
+              />
             </ListItem>
           ) : (
             <></>
