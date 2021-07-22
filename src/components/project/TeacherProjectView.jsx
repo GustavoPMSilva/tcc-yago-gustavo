@@ -15,7 +15,7 @@ import { useApi } from "../../contexts/ApiContext";
 import { AddParticipantToProject } from "../addparticipanttoproject";
 
 function TeacherProjectView({ project }) {
-  const { user, apiPut } = useApi();
+  const { user, apiPost, apiPut, apiDelete } = useApi();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
@@ -30,8 +30,21 @@ function TeacherProjectView({ project }) {
 
   const handleClose = (selectedId) => {
     setOpen(false);
-    if (selectedId != null) window.location.reload();
+    if (selectedId != null) addUserToProject(selectedId);
   };
+
+  function addUserToProject(userId) {
+    let body = { committee: false, coop: false };
+    apiPost(`project/${project.id}/user/${userId}`, body, () => {
+      window.location.reload();
+    });
+  }
+
+  function removeUserFromProject(user) {
+    apiDelete(`project/${project.id}/user/${user.id}`, () => {
+      window.location.reload();
+    });
+  }
 
   function saveChanges() {
     project.title = title;
@@ -62,7 +75,12 @@ function TeacherProjectView({ project }) {
               u.id !== projectUser.id ? (
                 <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
+                    <DeleteIcon
+                      onClick={(event) => {
+                        event.preventDefault();
+                        removeUserFromProject(u);
+                      }}
+                    />
                   </IconButton>
                 </ListItemSecondaryAction>
               ) : (

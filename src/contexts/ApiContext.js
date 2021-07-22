@@ -70,6 +70,10 @@ export const ApiProvider = ({ children }) => {
     doCall(api.put(url, body), callback, errorCallback, true);
   }
 
+  async function apiDelete(url, callback, errorCallback) {
+    doCall(api.delete(url), callback, errorCallback, true);
+  }
+
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("@GeProFi:user"))
   );
@@ -119,6 +123,7 @@ export const ApiProvider = ({ children }) => {
         apiGet,
         apiPost,
         apiPut,
+        apiDelete,
       }}
     >
       <LoadingOverlay active={loading} spinner>
