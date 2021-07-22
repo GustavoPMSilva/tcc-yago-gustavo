@@ -151,6 +151,7 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
             );
           }}
           disableColumnFilter
+          disableColumnMenu
         />
         <DialogActions>
           <Button
