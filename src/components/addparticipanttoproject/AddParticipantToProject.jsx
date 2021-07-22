@@ -143,6 +143,13 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
             setSelectedUserId(newSelectionModel);
           }}
           onEditCellChangeCommitted={handleEditCellChangeCommitted}
+          isCellEditable={(params) => {
+            let userType = UserType[params.row.userType];
+            return (
+              userType === UserType.TEACHER ||
+              userType === UserType.EXTERNAL_TEACHER
+            );
+          }}
           disableColumnFilter
         />
         <DialogActions>
