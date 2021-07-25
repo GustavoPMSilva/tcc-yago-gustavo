@@ -1,7 +1,7 @@
 Área pública:
     Ver projetos finalizados (alterar query pra filtrar por finalizados)
 
-Adicionar participantes no projeto
+Confirmação ao remover participantes do projeto
 
 Ata
 
@@ -9,6 +9,8 @@ Perfil
     Editar área de interesse
 
 FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+OK Adicionar participantes no projeto
 
 OK Fazer context provider/hook
     Loadings

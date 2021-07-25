@@ -38,7 +38,12 @@ function RegisterPage() {
         Registro
       </Typography>
       {user ? (
-        <UserForm user={user} buttonText="Registrar" onSubmit={doSubmit} />
+        <UserForm
+          user={user}
+          buttonText="Registrar"
+          onSubmit={doSubmit}
+          registration={true}
+        />
       ) : (
         <p>Loading</p>
       )}

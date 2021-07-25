@@ -13,6 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { NewProjectPage } from "./pages/newproject";
 import { ApiProvider } from "./contexts/ApiContext";
 import SnackbarProvider from "react-simple-snackbar";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 function App() {
   return (
@@ -54,6 +55,9 @@ function App() {
               </Route>
               <Route path="/register">
                 <RegisterPage />
+              </Route>
+              <Route path="/profile">
+                <ProfilePage />
               </Route>
               <Route>
                 <NotFoundPage />

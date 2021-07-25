@@ -54,6 +54,16 @@ function NavHeader() {
     }
   }
 
+  function showProfileLink() {
+    if (signed) {
+      return (
+        <div>
+          <Link to="/profile">Perfil</Link>
+        </div>
+      );
+    }
+  }
+
   function showLogoutButton() {
     if (signed) {
       return (
@@ -73,6 +83,7 @@ function NavHeader() {
       {showLoginLink()}
       {showNewProject()}
       {showInviteLink()}
+      {showProfileLink()}
       <div>
         <Button color="primary" onClick={handleClick}>
           Área Pública

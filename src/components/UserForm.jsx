@@ -1,11 +1,13 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button, FormControlLabel, Switch } from "@material-ui/core";
 import GpfTextField from "./core/GpfTextfield";
 import { useState } from "react";
 
-function UserForm({ user, buttonText, onSubmit }) {
+function UserForm({ user, buttonText, onSubmit, registration }) {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [changePassword, setChangePassword] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [dre, setDre] = useState(user.dre);
@@ -89,6 +91,7 @@ function UserForm({ user, buttonText, onSubmit }) {
         user.course = course;
         user.origin = origin;
         user.gender = gender;
+        user.currentPassword = currentPassword;
         onSubmit(user);
       }}
     >
@@ -135,22 +138,55 @@ function UserForm({ user, buttonText, onSubmit }) {
         required
       />
       {showFieldsByUserType()}
-      <GpfTextField
-        id="password"
-        label="Senha"
-        type="password"
-        value={password}
-        onChange={setPassword}
-        required
-      />
-      <GpfTextField
-        id="password_confirmation"
-        label="Confirmar senha"
-        type="password"
-        value={passwordConfirmation}
-        onChange={setPasswordConfirmation}
-        required
-      />
+      {registration ? (
+        <></>
+      ) : (
+        <>
+          <GpfTextField
+            id="current_password"
+            label="Senha atual"
+            type="password"
+            value={currentPassword}
+            onChange={setCurrentPassword}
+            required
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={changePassword}
+                onChange={(event) => {
+                  setChangePassword(event.target.checked);
+                }}
+                name="change_password"
+                color="primary"
+              />
+            }
+            label="Trocar senha"
+          />
+        </>
+      )}
+      {registration || changePassword ? (
+        <>
+          <GpfTextField
+            id="password"
+            label={registration ? "Senha" : "Nova senha"}
+            type="password"
+            value={password}
+            onChange={setPassword}
+            required={registration}
+          />
+          <GpfTextField
+            id="password_confirmation"
+            label={registration ? "Confirmar senha" : "Confirmar nova senha"}
+            type="password"
+            value={passwordConfirmation}
+            onChange={setPasswordConfirmation}
+            required={registration}
+          />
+        </>
+      ) : (
+        <></>
+      )}
       <Button variant="contained" color="primary" type="submit" fullWidth>
         {buttonText}
       </Button>
