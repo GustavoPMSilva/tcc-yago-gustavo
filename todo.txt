@@ -5,6 +5,9 @@ Adicionar participantes no projeto
 
 Ata
 
+Perfil
+    Editar área de interesse
+
 FUTURO - Adicionar manual - Como utilizar a plataforma.
 
 OK Fazer context provider/hook
