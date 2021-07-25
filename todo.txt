@@ -3,12 +3,14 @@
 
 Confirmação ao remover participantes do projeto
 
+Confirmação ao remover área de interesse do usuário
+
 Ata
 
-Perfil
-    Editar área de interesse
-
 FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+OK Perfil
+    Editar área de interesse
 
 OK Adicionar participantes no projeto
 
