@@ -25,15 +25,21 @@ function AddFieldOfInterestToUser({
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-  useEffect(() => {
-    function onListLoaded(data) {
-      setFieldOfInterestList(
-        data.filter((i) => !currentFieldOfInterestList.includes(i.id))
-      );
-    }
+  function onListLoaded(data) {
+    setFieldOfInterestList(
+      data.filter((i) => !currentFieldOfInterestList.includes(i.id))
+    );
+  }
 
-    apiGet("field", onListLoaded);
-  }, []);
+  useEffect(() => {
+    if (open) {
+      setValue("");
+      setName("");
+      setDescription("");
+      setNewFieldOfInterest(false);
+      apiGet("field", onListLoaded);
+    }
+  }, [open]);
 
   return (
     <>
@@ -135,7 +141,7 @@ function AddFieldOfInterestToUser({
               });
             }}
             disabled={
-              (!newFieldOfInterest && value === undefined) ||
+              (!newFieldOfInterest && value === "") ||
               (newFieldOfInterest &&
                 (name.length === 0 || description.length === 0))
             }
