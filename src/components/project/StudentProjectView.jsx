@@ -80,9 +80,17 @@ function StudentProjectView({ project }) {
       <Typography variant="body1">Status: {project.status}</Typography>
       <Typography variant="body1">Criado em: {project.registerDate}</Typography>
       {showUserList()}
-      <Button variant="contained" color="primary" type="submit" fullWidth>
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "#5AAF4B" }}
+        type="submit"
+        fullWidth
+      >
         Salvar
       </Button>
+      <br />
+      <br />
+      <br />
     </form>
   );
 }

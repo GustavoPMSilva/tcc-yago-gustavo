@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Typography,
   Button,
@@ -17,6 +18,7 @@ import { AlertDialog } from "../dialog";
 
 function TeacherProjectView({ project }) {
   const { user, apiPost, apiPut, apiDelete } = useApi();
+  let history = useHistory();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
@@ -25,6 +27,7 @@ function TeacherProjectView({ project }) {
 
   const [openAddUser, setOpenAddUser] = useState(false);
   const [userToBeRemoved, setUserToBeRemoved] = useState(null);
+  const [openDeleteProject, setOpenDeleteProject] = useState(false);
 
   const handleClickOpenAddUser = () => {
     setOpenAddUser(true);
@@ -44,6 +47,15 @@ function TeacherProjectView({ project }) {
     setUserToBeRemoved(null);
   };
 
+  const handleClickOpenDeleteProject = () => {
+    setOpenDeleteProject(true);
+  };
+
+  const handleCloseDeleteProject = (del) => {
+    setOpenDeleteProject(false);
+    if (del) deleteProject(project);
+  };
+
   function addUserToProject(user) {
     console.log(user);
     let body = { committee: user.committee, coop: user.coop };
@@ -55,6 +67,12 @@ function TeacherProjectView({ project }) {
   function removeUserFromProject(user) {
     apiDelete(`project/${project.id}/user/${user.id}`, () => {
       window.location.reload();
+    });
+  }
+
+  function deleteProject(project) {
+    apiDelete(`project/${project.id}`, () => {
+      history.push("/");
     });
   }
 
@@ -105,7 +123,7 @@ function TeacherProjectView({ project }) {
             <ListItem>
               <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 onClick={handleClickOpenAddUser}
                 fullWidth
               >
@@ -135,55 +153,101 @@ function TeacherProjectView({ project }) {
     );
   }
 
+  function showDeleteProjectButton() {
+    var projectUser = project.userList.find((u) => {
+      return u.id === user.id;
+    });
+
+    if (!projectUser.committee && !projectUser.coop) {
+      return (
+        <>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#eb2915" }}
+            onClick={(event) => {
+              event.stopPropagation();
+              handleClickOpenDeleteProject();
+            }}
+            fullWidth
+          >
+            Excluir
+          </Button>
+          <AlertDialog
+            open={openDeleteProject}
+            handleClose={handleCloseDeleteProject}
+            title="Excluir projeto"
+            body={`Tem certeza que deseja excluir o projeto ${title}? Essa ação não poderá ser desfeita.`}
+          />
+        </>
+      );
+    }
+  }
+
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        saveChanges();
-      }}
-    >
-      <GpfTextField
-        id="title"
-        label="Título"
-        value={title}
-        onChange={setTitle}
-        required
-      />
-      <GpfTextField
-        id="subject"
-        label="Tema"
-        value={subject}
-        onChange={setSubject}
-        required
-      />
-      <GpfTextField
-        id="description"
-        label="Resumo"
-        value={description}
-        onChange={setDescription}
-        rows={10}
-      />
-      <GpfSelect
-        id="status"
-        label="Estado"
-        options={ProjectStatus}
-        value={status}
-        onChange={setStatus}
-        required
-      />
-      <GpfTextField
-        id="keywords"
-        label="Palavras-chave"
-        value={keywords}
-        onChange={setKeywords}
-      />
-      <Typography variant="body1">Criado em: {project.registerDate}</Typography>
-      {showUserList()}
-      <Button variant="contained" color="primary" type="submit" fullWidth>
-        Salvar
-      </Button>
-    </form>
+    <>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          saveChanges();
+        }}
+      >
+        <GpfTextField
+          id="title"
+          label="Título"
+          value={title}
+          onChange={setTitle}
+          required
+        />
+        <GpfTextField
+          id="subject"
+          label="Tema"
+          value={subject}
+          onChange={setSubject}
+          required
+        />
+        <GpfTextField
+          id="description"
+          label="Resumo"
+          value={description}
+          onChange={setDescription}
+          rows={10}
+        />
+        <GpfSelect
+          id="status"
+          label="Estado"
+          options={ProjectStatus}
+          value={status}
+          onChange={setStatus}
+          required
+        />
+        <GpfTextField
+          id="keywords"
+          label="Palavras-chave"
+          value={keywords}
+          onChange={setKeywords}
+        />
+        <Typography variant="body1">
+          Criado em: {project.registerDate}
+        </Typography>
+        {showUserList()}
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#5AAF4B" }}
+          type="submit"
+          fullWidth
+        >
+          Salvar
+        </Button>
+      </form>
+      <br />
+      <br />
+      <br />
+      {showDeleteProjectButton()}
+      <br />
+      <br />
+      <br />
+    </>
   );
 }
 

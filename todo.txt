@@ -1,4 +1,9 @@
-Confirmação ao remover área de interesse do usuário
+Lista de Área de interesse
+    Criar
+    Editar
+    Excluir (se tiver 0)
+    Se remover 
+    Confirmação ao remover área de interesse do usuário
 
 Esqueci minha senha
     Email de recuperação
@@ -7,13 +12,6 @@ Esqueci minha senha
 File
     Link do drive
     Upload teacher/download student comentários
-
-Excluir projeto final teacher
-
-Lista de Área de interesse
-    Criar teacher
-    Editar teacher
-    Excluir teacher
 
 Lista de Usuários teacher
     Desativar/reativar student
@@ -61,3 +59,5 @@ OK Área pública:
     Ver projetos finalizados (alterar query pra filtrar por finalizados)
 
 OK Confirmação ao remover participantes do projeto
+
+OK Excluir projeto final teacher
