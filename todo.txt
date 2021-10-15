@@ -1,8 +1,3 @@
-Área pública:
-    Ver projetos finalizados (alterar query pra filtrar por finalizados)
-
-Confirmação ao remover participantes do projeto
-
 Confirmação ao remover área de interesse do usuário
 
 Esqueci minha senha
@@ -25,7 +20,11 @@ Lista de Usuários teacher
 
 Ata
 
+
 FUTURO - Adicionar manual - Como utilizar a plataforma.
+
+
+
 
 OK Perfil
     Editar área de interesse
@@ -57,3 +56,8 @@ OK - Organização de texto
     6. Referências
 
 OK - ANEXOS
+
+OK Área pública:
+    Ver projetos finalizados (alterar query pra filtrar por finalizados)
+
+OK Confirmação ao remover participantes do projeto

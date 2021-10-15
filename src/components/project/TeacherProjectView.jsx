@@ -13,6 +13,7 @@ import { ProjectStatus } from "../../models/project";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useApi } from "../../contexts/ApiContext";
 import { AddParticipantToProject } from "../addparticipanttoproject";
+import { AlertDialog } from "../dialog";
 
 function TeacherProjectView({ project }) {
   const { user, apiPost, apiPut, apiDelete } = useApi();
@@ -22,15 +23,25 @@ function TeacherProjectView({ project }) {
   const [status, setStatus] = useState(project.status);
   const [keywords, setKeywords] = useState(project.keywords);
 
-  const [open, setOpen] = useState(false);
+  const [openAddUser, setOpenAddUser] = useState(false);
+  const [userToBeRemoved, setUserToBeRemoved] = useState(null);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenAddUser = () => {
+    setOpenAddUser(true);
   };
 
-  const handleClose = (data) => {
-    setOpen(false);
+  const handleCloseAddUser = (data) => {
+    setOpenAddUser(false);
     if (data != null) addUserToProject(data.user);
+  };
+
+  const handleClickOpenRemoveUser = (user) => {
+    setUserToBeRemoved(user);
+  };
+
+  const handleCloseRemoveUser = (remove) => {
+    if (remove) removeUserFromProject(userToBeRemoved);
+    setUserToBeRemoved(null);
   };
 
   function addUserToProject(user) {
@@ -78,8 +89,8 @@ function TeacherProjectView({ project }) {
                   <IconButton
                     edge="end"
                     onClick={(event) => {
-                      event.preventDefault();
-                      removeUserFromProject(u);
+                      event.stopPropagation();
+                      handleClickOpenRemoveUser(u);
                     }}
                   >
                     <DeleteIcon />
@@ -95,14 +106,14 @@ function TeacherProjectView({ project }) {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={handleClickOpen}
+                onClick={handleClickOpenAddUser}
                 fullWidth
               >
                 Adicionar
               </Button>
               <AddParticipantToProject
-                open={open}
-                handleClose={handleClose}
+                open={openAddUser}
+                handleClose={handleCloseAddUser}
                 currentUserList={project.userList.map((u) => u.id)}
               />
             </ListItem>
@@ -110,6 +121,16 @@ function TeacherProjectView({ project }) {
             <></>
           )}
         </List>
+        <AlertDialog
+          open={userToBeRemoved != null}
+          handleClose={handleCloseRemoveUser}
+          title="Remover usuário do projeto"
+          body={
+            userToBeRemoved == null
+              ? ""
+              : `Tem certeza que deseja remover ${userToBeRemoved.name} do projeto?`
+          }
+        />
       </>
     );
   }
