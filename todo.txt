@@ -1,11 +1,3 @@
-Lista de Área de interesse
-    OK Criar
-    OK Editar
-    Excluir (se tiver 0)
-    OK Se adicionar
-    OK Se remover
-    OK Confirmação ao remover área de interesse do usuário
-
 Esqueci minha senha
     Email de recuperação
     Nova senha
@@ -65,3 +57,11 @@ OK Confirmação ao remover participantes do projeto
 OK Excluir projeto final teacher
 
 OK Adicionar imagens
+
+OK Lista de Área de interesse
+    OK Criar
+    OK Editar
+    OK Excluir (se tiver 0)
+    OK Se adicionar
+    OK Se remover
+    OK Confirmação ao remover área de interesse do usuário
