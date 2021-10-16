@@ -48,3 +48,8 @@ code {
 .fancy-form {
   margin-bottom: 10px;
 }
+
+.center {
+  display: block;
+  margin: 0 auto;
+}

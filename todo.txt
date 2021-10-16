@@ -9,15 +9,16 @@ Esqueci minha senha
     Email de recuperação
     Nova senha
 
+Lista de Usuários teacher
+    Desativar/reativar student
+
 File
     Link do drive
     Upload teacher/download student comentários
 
-Lista de Usuários teacher
-    Desativar/reativar student
-
 Ata
 
+*PENSAR - Validar adicionar professor com role
 
 FUTURO - Adicionar manual - Como utilizar a plataforma.
 
@@ -61,3 +62,5 @@ OK Área pública:
 OK Confirmação ao remover participantes do projeto
 
 OK Excluir projeto final teacher
+
+OK Adicionar imagens
