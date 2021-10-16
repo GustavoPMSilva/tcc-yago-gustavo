@@ -1,6 +1,6 @@
 Lista de Área de interesse
     OK Criar
-    Editar
+    OK Editar
     Excluir (se tiver 0)
     OK Se adicionar
     OK Se remover

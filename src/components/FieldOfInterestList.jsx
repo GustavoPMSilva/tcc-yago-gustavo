@@ -49,7 +49,11 @@ function FieldOfInterestList({ fieldOfInterests }) {
             .map((field) => (
               <TableRow key={field.id}>
                 <TableCell component="th" scope="row">
-                  <Link to={`/field/${field.id}/users`}>{field.name}</Link>
+                  <Link
+                    to={`/public/field/${field.id}/users?name=${field.name}`}
+                  >
+                    {field.name}
+                  </Link>
                 </TableCell>
                 <TableCell align="right">{field.description}</TableCell>
               </TableRow>

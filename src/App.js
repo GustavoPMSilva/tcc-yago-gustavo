@@ -6,6 +6,7 @@ import PublicProjectsPage from "./pages/PublicProjetcsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
 import FieldOfInterestPage from "./pages/FieldOfInterestPage";
+import PublicFieldOfInterestPage from "./pages/PublicFieldOfInterestPage";
 import UserPage from "./pages/UserPage";
 import { ProjectPage, PublicProjectPage } from "./pages/project";
 import InvitePage from "./pages/InvitePage";
@@ -38,7 +39,10 @@ function App() {
               <Route path="/public/project/:id">
                 <PublicProjectPage />
               </Route>
-              <Route path="/field/:id/users">
+              <Route path="/public/field/:id/users">
+                <PublicFieldOfInterestPage />
+              </Route>
+              <Route path="/field/:id">
                 <FieldOfInterestPage />
               </Route>
               <Route path="/user/:id/fields">
