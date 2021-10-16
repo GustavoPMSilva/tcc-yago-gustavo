@@ -34,16 +34,6 @@ function NavHeader() {
     }
   }
 
-  function showNewProject() {
-    if (signed && user.userType === "TEACHER") {
-      return (
-        <div>
-          <Link to="/newproject">Novo projeto</Link>
-        </div>
-      );
-    }
-  }
-
   function showInviteLink() {
     if (signed && user.userType === "TEACHER") {
       return (
@@ -81,7 +71,6 @@ function NavHeader() {
         <Link to="/">Home</Link>
       </div>
       {showLoginLink()}
-      {showNewProject()}
       {showInviteLink()}
       {showProfileLink()}
       <div>

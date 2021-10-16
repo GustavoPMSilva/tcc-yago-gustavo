@@ -1,9 +1,10 @@
 Lista de Área de interesse
-    Criar
+    OK Criar
     Editar
     Excluir (se tiver 0)
-    Se remover 
-    Confirmação ao remover área de interesse do usuário
+    OK Se adicionar
+    OK Se remover
+    OK Confirmação ao remover área de interesse do usuário
 
 Esqueci minha senha
     Email de recuperação
