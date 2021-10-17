@@ -87,6 +87,21 @@ function SignedInHomePage() {
     history.push("/newproject");
   }
 
+  function showCreateProjectButton() {
+    if (user.userType === "TEACHER") {
+      return (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onNewProjectClicked}
+          fullWidth
+        >
+          Novo Projeto
+        </Button>
+      );
+    }
+  }
+
   function showFieldOfInterestList() {
     if (user.userType === "TEACHER") {
       return (
@@ -169,14 +184,7 @@ function SignedInHomePage() {
         </Table>
       </TableContainer>
       <br />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={onNewProjectClicked}
-        fullWidth
-      >
-        Novo Projeto
-      </Button>
+      {showCreateProjectButton()}
       <br />
       <br />
       <br />
