@@ -1,15 +1,14 @@
-Esqueci minha senha
-    Email de recuperação
-    Nova senha
+File -> Projeto
+    Link do drive -> enviar email ao alterar (back)
+    Botão de "revisar" -> enviar email e liberar "revisado"
+    Botão de "revisado" -> enviar email e liberar "revisar"
 
 Lista de Usuários teacher
     Desativar/reativar student
 
-File
-    Link do drive
-    Upload teacher/download student comentários
-
 Ata
+
+Página de erro (tirar oops I did it again to your heart)
 
 *PENSAR - Validar adicionar professor com role
 
@@ -65,3 +64,7 @@ OK Lista de Área de interesse
     OK Se adicionar
     OK Se remover
     OK Confirmação ao remover área de interesse do usuário
+
+OK Esqueci minha senha
+    OK Email de recuperação
+    OK Nova senha

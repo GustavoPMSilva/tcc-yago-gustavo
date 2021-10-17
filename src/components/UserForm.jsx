@@ -20,6 +20,8 @@ function UserForm({ user, buttonText, onSubmit, registration }) {
   const [userProfile, setUserProfile] = useState(user.userProfile);
   const [course, setCourse] = useState(user.course);
   const [origin, setOrigin] = useState(user.origin);
+  const [error, setError] = useState(false);
+  const [helperText, setHelperText] = useState("");
 
   function showFieldsByUserType() {
     if (user.userType === "STUDENT") {
@@ -174,20 +176,34 @@ function UserForm({ user, buttonText, onSubmit, registration }) {
             value={password}
             onChange={setPassword}
             required={registration}
+            error={error}
+            helperText={helperText}
           />
           <GpfTextField
             id="password_confirmation"
             label={registration ? "Confirmar senha" : "Confirmar nova senha"}
             type="password"
             value={passwordConfirmation}
-            onChange={setPasswordConfirmation}
+            onChange={(value) => {
+              setPasswordConfirmation(value);
+              setError(password !== value);
+              setHelperText(password !== value ? "Senhas não são iguais" : "");
+            }}
             required={registration}
+            error={error}
+            helperText={helperText}
           />
         </>
       ) : (
         <></>
       )}
-      <Button variant="contained" color="primary" type="submit" fullWidth>
+      <Button
+        variant="contained"
+        color="primary"
+        type="submit"
+        fullWidth
+        disabled={error}
+      >
         {buttonText}
       </Button>
     </form>

@@ -1,7 +1,17 @@
 import React from "react";
 import { TextField } from "@material-ui/core";
 
-function GpfTextField({ id, label, value, onChange, type, required, rows }) {
+function GpfTextField({
+  id,
+  label,
+  value,
+  onChange,
+  type,
+  required,
+  rows,
+  error,
+  helperText,
+}) {
   return (
     <TextField
       id={id}
@@ -19,6 +29,8 @@ function GpfTextField({ id, label, value, onChange, type, required, rows }) {
       required={required || false}
       multiline={rows ? true : false}
       rows={rows || 1}
+      error={error}
+      helperText={helperText}
     />
   );
 }
