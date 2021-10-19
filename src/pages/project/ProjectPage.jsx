@@ -19,8 +19,15 @@ function ProjectPage() {
   useEffect(() => {
     function onProjectLoaded(data) {
       console.log(data);
-      setProject(data);
-      setLoading(false);
+
+      if (data.status === "ENDED") {
+        history.push(`/public/project/${data.id}`);
+      } else if (data.status === "CANCELED") {
+        history.push("/404");
+      } else {
+        setProject(data);
+        setLoading(false);
+      }
     }
 
     function onError(error) {
