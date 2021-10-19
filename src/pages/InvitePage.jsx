@@ -51,6 +51,11 @@ function InvitePage() {
             row
           >
             <FormControlLabel
+              value="TEACHER"
+              control={<Radio color="primary" />}
+              label="Professor"
+            />
+            <FormControlLabel
               value="EXTERNAL_TEACHER"
               control={<Radio color="primary" />}
               label="Professor externo"
