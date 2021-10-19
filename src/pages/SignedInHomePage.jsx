@@ -111,7 +111,12 @@ function SignedInHomePage() {
           </Typography>
           <List>
             {fieldOfInterestList.map((f) => (
-              <ListItem key={f.id} component={Link} to={`/field/${f.id}`}>
+              <ListItem
+                key={f.id}
+                component={Link}
+                to={`/field/${f.id}`}
+                disableGutters
+              >
                 <ListItemText primary={f.name} />
                 <ListItemSecondaryAction>
                   <IconButton

@@ -105,7 +105,7 @@ function TeacherProjectView({ project }) {
         </Typography>
         <List>
           {project.userList.map((u) => (
-            <ListItem key={u.id}>
+            <ListItem key={u.id} disableGutters>
               <ListItemText primary={u.name} />
               {!projectUser.committee &&
               !projectUser.coop &&
@@ -127,7 +127,7 @@ function TeacherProjectView({ project }) {
             </ListItem>
           ))}
           {!projectUser.committee && !projectUser.coop ? (
-            <ListItem>
+            <ListItem disableGutters>
               <Button
                 variant="contained"
                 color="primary"

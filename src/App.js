@@ -16,6 +16,7 @@ import { ApiProvider } from "./contexts/ApiContext";
 import SnackbarProvider from "react-simple-snackbar";
 import ProfilePage from "./pages/profile/ProfilePage";
 import { ForgotPasswordPage } from "./pages/forgotpassword";
+import UsersPage from "./pages/users/UsersPage";
 
 function App() {
   return (
@@ -66,6 +67,9 @@ function App() {
               </Route>
               <Route path="/forgotpassword">
                 <ForgotPasswordPage />
+              </Route>
+              <Route path="/users">
+                <UsersPage />
               </Route>
               <Route>
                 <NotFoundPage />

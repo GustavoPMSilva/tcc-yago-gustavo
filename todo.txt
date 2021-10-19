@@ -1,5 +1,8 @@
-Lista de Usuários teacher
-    Desativar/reativar student
+Convidar outro professor
+
+Layout página do usuário
+
+Layout página pública do projeto
 
 Ata
 
@@ -68,3 +71,6 @@ OK File -> Projeto
     OK Botão de "revisado" -> enviar email e liberar "revisar"
 
 OK Página de erro (tirar oops I did it again to your heart)
+
+OK Lista de Usuários teacher
+    Desativar/reativar student

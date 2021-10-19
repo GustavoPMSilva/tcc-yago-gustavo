@@ -41,13 +41,12 @@ function PublicProjectPage() {
             {project.description}
           </Typography>
           <Typography variant="body1" align="center">
-            {project.status}
-          </Typography>
-          <Typography variant="body1" align="center">
-            {project.registerDate}
-          </Typography>
-          <Typography variant="body1" align="center">
             {project.keywords}
+          </Typography>
+          <Typography variant="body1" align="center">
+            <a href={project.file} target="_blank" rel="noreferrer">
+              {project.file}
+            </a>
           </Typography>
           <UserList userList={project.userList} />
         </>

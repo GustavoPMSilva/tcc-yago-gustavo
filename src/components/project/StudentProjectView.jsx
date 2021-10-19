@@ -44,7 +44,7 @@ function StudentProjectView({ project }) {
         </Typography>
         <List>
           {project.userList.map((u) => (
-            <ListItem key={u.id}>
+            <ListItem key={u.id} disableGutters>
               <ListItemText primary={u.name} />
             </ListItem>
           ))}

@@ -34,11 +34,11 @@ function NavHeader() {
     }
   }
 
-  function showInviteLink() {
+  function showUsersLink() {
     if (signed && user.userType === "TEACHER") {
       return (
         <div>
-          <Link to="/invite">Convidar</Link>
+          <Link to="/users">Usuários</Link>
         </div>
       );
     }
@@ -71,7 +71,7 @@ function NavHeader() {
         <Link to="/">Home</Link>
       </div>
       {showLoginLink()}
-      {showInviteLink()}
+      {showUsersLink()}
       {showProfileLink()}
       <div>
         <Button color="primary" onClick={handleClick}>

@@ -89,7 +89,7 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
       setUserList(data.filter((i) => !currentUserList.includes(i.id)));
     }
 
-    apiGet("user", onListLoaded);
+    apiGet("users/active", onListLoaded);
   }, []);
 
   return (
