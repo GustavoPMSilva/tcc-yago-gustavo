@@ -13,20 +13,24 @@ function GpfSelect({ id, label, options, value, onChange, required }) {
   }
 
   return (
-    <FormControl required={required || false} fullWidth>
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        labelId={id}
-        id={`${id}-select`}
-        value={value}
-        onChange={(event) => {
-          event.stopPropagation();
-          onChange(event.target.value);
-        }}
-      >
-        {renderOptions()}
-      </Select>
-    </FormControl>
+    <>
+      <FormControl required={required || false} fullWidth>
+        <InputLabel id={id}>{label}</InputLabel>
+        <Select
+          labelId={id}
+          id={`${id}-select`}
+          value={value}
+          onChange={(event) => {
+            event.stopPropagation();
+            onChange(event.target.value);
+          }}
+        >
+          {renderOptions()}
+        </Select>
+      </FormControl>
+      <br />
+      <br />
+    </>
   );
 }
 

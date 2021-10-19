@@ -8,6 +8,7 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
+  Grid,
 } from "@material-ui/core";
 import { GpfSelect, GpfTextField } from "../core";
 import { ProjectStatus } from "../../models/project";
@@ -53,7 +54,7 @@ function TeacherProjectView({ project }) {
 
   const handleCloseDeleteProject = (del) => {
     setOpenDeleteProject(false);
-    if (del) deleteProject(project);
+    if (del) deleteProject();
   };
 
   function addUserToProject(user) {
@@ -70,9 +71,15 @@ function TeacherProjectView({ project }) {
     });
   }
 
-  function deleteProject(project) {
+  function deleteProject() {
     apiDelete(`project/${project.id}`, () => {
       history.push("/");
+    });
+  }
+
+  function markAsReviewed() {
+    apiPut(`project/${project.id}/reviewed`, null, () => {
+      window.location.reload();
     });
   }
 
@@ -183,6 +190,38 @@ function TeacherProjectView({ project }) {
     }
   }
 
+  function showProjectLink() {
+    return (
+      <Grid container spacing={1} alignItems="center">
+        <Grid item xs>
+          <Typography variant="body1">
+            Link para o documento do projeto:{" "}
+            {project.file ? (
+              <a href={project.file} target="_blank" rel="noreferrer">
+                {project.file}
+              </a>
+            ) : (
+              "Ainda não adicionado pelo aluno"
+            )}
+          </Typography>
+        </Grid>
+        {project.file && project.fileStatus === "IN_REVIEW" ? (
+          <Grid item alignItems="stretch" style={{ display: "flex" }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={markAsReviewed}
+            >
+              Revisado
+            </Button>
+          </Grid>
+        ) : (
+          <></>
+        )}
+      </Grid>
+    );
+  }
+
   return (
     <>
       <form
@@ -227,10 +266,12 @@ function TeacherProjectView({ project }) {
           value={keywords}
           onChange={setKeywords}
         />
+        {showProjectLink()}
+        <br />
         <Typography variant="body1">
           Criado em: {project.registerDate}
         </Typography>
-        {showUserList()}
+        <br />
         <Button
           variant="contained"
           style={{ backgroundColor: "#5AAF4B" }}
@@ -241,7 +282,7 @@ function TeacherProjectView({ project }) {
         </Button>
       </form>
       <br />
-      <br />
+      {showUserList()}
       <br />
       {showDeleteProjectButton()}
       <br />
