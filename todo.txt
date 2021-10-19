@@ -3,8 +3,6 @@ Lista de Usuários teacher
 
 Ata
 
-Página de erro (tirar oops I did it again to your heart)
-
 *PENSAR - Validar adicionar professor com role
 
 FUTURO - Adicionar manual - Como utilizar a plataforma.
@@ -68,3 +66,5 @@ OK File -> Projeto
     OK Link do drive -> enviar email ao alterar (back)
     OK Botão de "revisar" -> enviar email e liberar "revisado"
     OK Botão de "revisado" -> enviar email e liberar "revisar"
+
+OK Página de erro (tirar oops I did it again to your heart)

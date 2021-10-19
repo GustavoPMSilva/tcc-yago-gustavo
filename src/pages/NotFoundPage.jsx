@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotFoundPage() {
-  return <p>Ops I did it again</p>;
+  return <p>ERRO: o que você estava procurando não foi encontrado.</p>;
 }
 
 export default NotFoundPage;
