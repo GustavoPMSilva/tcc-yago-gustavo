@@ -34,19 +34,28 @@ function PublicProjectPage() {
           <Typography variant="h3" component="h1" align="center">
             {project.title}
           </Typography>
-          <Typography variant="h5" align="center">
-            {project.subject}
+          <br />
+          <Typography variant="h5" component="h1">
+            Assunto: {project.subject}
           </Typography>
-          <Typography variant="body1" align="center">
-            {project.description}
+          <br />
+          <Typography variant="h5" component="h1">
+            Resumo: {project.description}
           </Typography>
-          <Typography variant="body1" align="center">
-            {project.keywords}
+          <br />
+          <Typography variant="h5" component="h1">
+            Palavras-chave: {project.keywords}
           </Typography>
-          <Typography variant="body1" align="center">
+          <br />
+          <Typography variant="h5" component="h1">
+            Link para o documento do projeto:&nbsp;
             <a href={project.file} target="_blank" rel="noreferrer">
               {project.file}
             </a>
+          </Typography>
+          <br />
+          <Typography variant="h4" component="h1" align="center">
+            Participantes
           </Typography>
           <UserList userList={project.userList} />
         </>

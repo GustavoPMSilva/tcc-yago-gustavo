@@ -1,5 +1,3 @@
-Layout página pública do projeto
-
 Ata
 
 *PENSAR - Validar adicionar professor com role
@@ -74,3 +72,5 @@ OK Lista de Usuários teacher
 OK Convidar outro professor
 
 OK Layout página do usuário
+
+OK Layout página pública do projeto

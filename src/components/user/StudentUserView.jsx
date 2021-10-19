@@ -11,6 +11,7 @@ function StudentUserView({ user }) {
       <Typography variant="h5" component="h1">
         Email: {user.email}
       </Typography>
+      <br />
       <Typography variant="h5" component="h1">
         Lattes:&nbsp;
         <a href={user.lattes} taget="_blank" rel="noreferrer">
