@@ -24,7 +24,7 @@ function UserList({ userList }) {
           {userList.map((user) => (
             <TableRow key={user.id}>
               <TableCell component="th" scope="row">
-                <Link to={`/user/${user.id}/fields`}>{user.name}</Link>
+                <Link to={`/user/${user.id}`}>{user.name}</Link>
               </TableCell>
               <TableCell align="right">{user.userProfile}</TableCell>
             </TableRow>

@@ -10,6 +10,7 @@ import {
   Grid,
 } from "@material-ui/core";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 function UsersPage() {
   const { apiGet, apiPut } = useApi();
@@ -53,7 +54,7 @@ function UsersPage() {
           <ListItem key={user.id} disableGutters>
             <Grid container spacing={1}>
               <Grid item xs>
-                <ListItemText primary={user.name} fullWidth />
+                <Link to={`/user/${user.id}`}>{user.name}</Link>
               </Grid>
               <Grid item alignItems="stretch" style={{ display: "flex" }}>
                 {user.status === "ACTIVE" ? (

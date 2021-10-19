@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { useApi } from "../contexts/ApiContext";
-import User from "../components/User";
+import { Container } from "@material-ui/core";
+import { StudentUserView, TeacherUserView } from "../components/user";
 
 function UserPage() {
   const { apiGet } = useApi();
@@ -16,7 +17,15 @@ function UserPage() {
     });
   }, []);
 
-  return <User user={user} />;
+  return (
+    <Container component="article">
+      {user.userType === "STUDENT" ? (
+        <StudentUserView user={user} />
+      ) : (
+        <TeacherUserView user={user} />
+      )}
+    </Container>
+  );
 }
 
 export default UserPage;

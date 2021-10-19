@@ -1,7 +1,3 @@
-Convidar outro professor
-
-Layout página do usuário
-
 Layout página pública do projeto
 
 Ata
@@ -74,3 +70,7 @@ OK Página de erro (tirar oops I did it again to your heart)
 
 OK Lista de Usuários teacher
     Desativar/reativar student
+
+OK Convidar outro professor
+
+OK Layout página do usuário

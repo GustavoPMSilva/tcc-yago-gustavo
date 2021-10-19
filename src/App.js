@@ -47,7 +47,7 @@ function App() {
               <Route path="/field/:id">
                 <FieldOfInterestPage />
               </Route>
-              <Route path="/user/:id/fields">
+              <Route path="/user/:id">
                 <UserPage />
               </Route>
               <Route path="/newproject">
