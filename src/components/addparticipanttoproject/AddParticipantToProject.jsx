@@ -92,6 +92,14 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
     apiGet("users/active", onListLoaded);
   }, []);
 
+  function enableDisableAddButton() {
+    if (selectedUserId.length === 0) return true;
+    const selectedUser = userList.find((u) => u.id === selectedUserId[0]);
+    if (selectedUser.userType === "STUDENT") return false;
+    if (selectedUser.coop || selectedUser.committee) return false;
+    return true;
+  }
+
   return (
     <div>
       <Dialog
@@ -171,7 +179,7 @@ function AddParticipantToProject({ open, handleClose, currentUserList }) {
               });
             }}
             color="primary"
-            disabled={selectedUserId.length === 0}
+            disabled={enableDisableAddButton()}
           >
             Adicionar
           </Button>
