@@ -6,7 +6,6 @@ import {
   Button,
   List,
   ListItem,
-  ListItemText,
   Grid,
 } from "@material-ui/core";
 import { useHistory } from "react-router";
