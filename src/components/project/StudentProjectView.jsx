@@ -89,14 +89,17 @@ function StudentProjectView({ project }) {
           value={keywords}
           onChange={setKeywords}
         />
-        {project.status === "IN_PROGRESS" ? (
+        {project.status === "IN_PROGRESS" ||
+        project.status === "TO_BE_PRESENTED" ? (
           <GpfTextField
             id="file"
             label="Link para o documento do projeto"
             value={file ? file : ""}
             onChange={setFile}
             showButton={
-              project.fileStatus != null && project.fileStatus === "REVIEWED"
+              project.status === "IN_PROGRESS" &&
+              project.fileStatus != null &&
+              project.fileStatus === "REVIEWED"
             }
             endButton="Mandar para revisão"
             onEndButtonClicked={sendToReview}

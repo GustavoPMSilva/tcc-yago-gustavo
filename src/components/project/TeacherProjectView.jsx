@@ -8,7 +8,6 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  Grid,
 } from "@material-ui/core";
 import { GpfSelect, GpfTextField } from "../core";
 import { ProjectStatus } from "../../models/project";
@@ -25,6 +24,16 @@ function TeacherProjectView({ project }) {
   const [description, setDescription] = useState(project.description);
   const [status, setStatus] = useState(project.status);
   const [keywords, setKeywords] = useState(project.keywords);
+  const [file, setFile] = useState(project.file);
+  const [presentationDate, setPresentationDate] = useState(
+    project.record ? project.record.thesisDate : null
+  );
+  const [presentationTime, setPresentationTime] = useState(
+    project.record ? project.record.beginTime : null
+  );
+  const [presentationLocation, setPresentationLocation] = useState(
+    project.record ? project.record.location : null
+  );
 
   const [openAddUser, setOpenAddUser] = useState(false);
   const [userToBeRemoved, setUserToBeRemoved] = useState(null);
@@ -89,8 +98,23 @@ function TeacherProjectView({ project }) {
     project.description = description;
     project.status = status;
     project.keywords = keywords;
+    project.file = file;
+    if (status === "TO_BE_PRESENTED") {
+      project.record = {
+        thesisDate: presentationDate,
+        beginTime:
+          presentationTime.split(":").length > 2
+            ? presentationTime
+            : presentationTime + ":00",
+        location: presentationLocation,
+      };
+    }
 
-    apiPut(`project/${project.id}`, project);
+    console.log(project);
+
+    apiPut(`project/${project.id}`, project, undefined, (error) => {
+      window.location.reload();
+    });
   }
 
   function showUserList() {
@@ -190,36 +214,62 @@ function TeacherProjectView({ project }) {
     }
   }
 
-  function showProjectLink() {
-    return (
-      <Grid container spacing={1} alignItems="center">
-        <Grid item xs>
-          <Typography variant="body1">
-            Link para o documento do projeto:{" "}
-            {project.file ? (
-              <a href={project.file} target="_blank" rel="noreferrer">
-                {project.file}
-              </a>
-            ) : (
-              "Ainda não adicionado pelo aluno"
-            )}
-          </Typography>
-        </Grid>
-        {project.file && project.fileStatus === "IN_REVIEW" ? (
-          <Grid item alignItems="stretch" style={{ display: "flex" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={markAsReviewed}
-            >
-              Revisado
-            </Button>
-          </Grid>
-        ) : (
-          <></>
-        )}
-      </Grid>
-    );
+  function showSchedulePresentationFields() {
+    if (status === "TO_BE_PRESENTED") {
+      return (
+        <>
+          <GpfTextField
+            id="presentation_date"
+            label="Data da defesa"
+            value={presentationDate}
+            onChange={setPresentationDate}
+            type="date"
+            shrinkLabel
+            required
+          />
+          <GpfTextField
+            id="presentation_time"
+            label="Hora da defesa"
+            value={presentationTime}
+            onChange={setPresentationTime}
+            type="time"
+            shrinkLabel
+            required
+          />
+          <GpfTextField
+            id="presentation_location"
+            label="Local da defesa"
+            value={presentationLocation}
+            onChange={setPresentationLocation}
+          />
+        </>
+      );
+    }
+  }
+
+  function showRecordButton() {
+    var projectUser = project.userList.find((u) => {
+      return u.id === user.id;
+    });
+
+    if (
+      !projectUser.committee &&
+      !projectUser.coop &&
+      project.status === "TO_BE_PRESENTED"
+    ) {
+      return (
+        <>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#d9ba21" }}
+            type="submit"
+            fullWidth
+          >
+            Gerar ata
+          </Button>
+        </>
+      );
+    }
   }
 
   return (
@@ -260,13 +310,26 @@ function TeacherProjectView({ project }) {
           onChange={setStatus}
           required
         />
+        {showSchedulePresentationFields()}
         <GpfTextField
           id="keywords"
           label="Palavras-chave"
           value={keywords}
           onChange={setKeywords}
         />
-        {showProjectLink()}
+        <GpfTextField
+          id="file"
+          label="Link para o documento do projeto"
+          value={file ? file : ""}
+          onChange={setFile}
+          showButton={
+            project.status === "IN_PROGRESS" &&
+            project.fileStatus != null &&
+            project.fileStatus === "IN_REVIEW"
+          }
+          endButton="Revisado"
+          onEndButtonClicked={markAsReviewed}
+        />
         <br />
         <Typography variant="body1">
           Criado em: {project.registerDate}
@@ -281,6 +344,9 @@ function TeacherProjectView({ project }) {
           Salvar
         </Button>
       </form>
+      <br />
+      {showRecordButton()}
+      <br />
       <br />
       {showUserList()}
       <br />

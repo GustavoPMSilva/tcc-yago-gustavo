@@ -1,11 +1,13 @@
 Criar um status de pronto para defesa (to_be_presented)
-    Perguntar data e hora e mandar email pra geral
-    Liberar botão gerar ata para orientador (para ser feito depois da defesa de fato)
+    OK Perguntar data e hora
+    Mandar email pra geral
+    OK Liberar botão gerar ata para orientador (para ser feito depois da defesa de fato)
 
 Ata
     Gerar PDF da ata seguindo modelo
         Mandar email pra geral pedindo assinatura
     Assinatura
+    Orientador ver ata em página de projeto finalizado
 
 FUTURO - Adicionar manual - Como utilizar a plataforma.
 

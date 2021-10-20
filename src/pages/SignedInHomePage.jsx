@@ -20,7 +20,7 @@ import {
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useApi } from "../contexts/ApiContext";
-import { AddFieldOfInterestToUser } from "../components/appfieldofinteresttouser";
+import { AddFieldOfInterestToUser } from "../components/addfieldofinteresttouser";
 import { AlertDialog } from "../components/dialog";
 
 function SignedInHomePage() {

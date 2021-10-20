@@ -14,6 +14,7 @@ function GpfTextField({
   showButton,
   endButton,
   onEndButtonClicked,
+  shrinkLabel,
 }) {
   function showEndButton() {
     if (showButton !== undefined && showButton === true) {
@@ -52,6 +53,13 @@ function GpfTextField({
             rows={rows || 1}
             error={error}
             helperText={helperText}
+            InputLabelProps={
+              shrinkLabel
+                ? {
+                    shrink: shrinkLabel,
+                  }
+                : {}
+            }
           />
         </Grid>
         {showEndButton()}
