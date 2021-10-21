@@ -1,6 +1,8 @@
 Ata
     OK Gerar PDF
-    Gerar PDF da ata seguindo modelo
+    OK Gerar PDF da ata seguindo modelo
+        -> Falta pegar aprovação ou não e nota
+    Página para informações da ata
     Assinatura
     Mandar email pra geral pedindo assinatura
     Orientador ver ata em página de projeto finalizado

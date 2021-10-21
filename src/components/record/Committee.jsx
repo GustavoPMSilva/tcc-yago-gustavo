@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "@react-pdf/renderer";
 
-function Committee({ fontSize, name, advisor, signature }) {
+function Committee({ fontSize, name, advisor, coadvisor, signature }) {
   return (
     <View style={{ flexDirection: "row", marginTop: 10 }}>
       <Text
@@ -12,7 +12,9 @@ function Committee({ fontSize, name, advisor, signature }) {
           fontFamily: "Times-Roman",
         }}
       >
-        {`Nome: ${name} ${advisor ? "(ORIENTADOR)" : ""}`}
+        {`Nome: ${name} ${
+          advisor ? "(ORIENTADOR)" : coadvisor ? "(CO-ORIENTADOR)" : ""
+        }`}
       </Text>
       <Text
         style={{

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import { Page, Text, Document, Font, Image, View } from "@react-pdf/renderer";
 import Student from "./Student";
 import Committee from "./Committee";
@@ -11,10 +12,24 @@ Font.register({
 });
 
 // Create Document Component
-function RecordPdf() {
+function RecordPdf({ project }) {
   const smallFontSize = 8;
   const mediumFontSize = 11;
   const mediumHighFontSize = 12;
+
+  const [studentList, setStudentList] = useState([]);
+  const [notStudentList, setNotStudentList] = useState([]);
+
+  useEffect(() => {
+    setStudentList(project.userList.filter((u) => u.userType === "STUDENT"));
+    var notStudents = project.userList.filter((u) => u.userType !== "STUDENT");
+    var notStudentsSorted = [
+      ...notStudents.filter((u) => !u.coop && !u.committee),
+      ...notStudents.filter((u) => u.coop),
+      ...notStudents.filter((u) => u.committee),
+    ];
+    setNotStudentList(notStudentsSorted);
+  }, []);
 
   return (
     <Document>
@@ -89,8 +104,7 @@ function RecordPdf() {
             marginTop: 12,
           }}
         >
-          Ata da undefined Defesa de Projeto Final do Curso de Ciência da
-          Computação.
+          {`Ata da ${project.record.thesisId} Defesa de Projeto Final do Curso de Ciência da Computação.`}
         </Text>
         <View style={{ flexDirection: "row" }}>
           <Text
@@ -115,9 +129,13 @@ function RecordPdf() {
             DRE
           </Text>
         </View>
-        <Student fontSize={mediumHighFontSize} />
-        <Student fontSize={mediumHighFontSize} />
-        <Student fontSize={mediumHighFontSize} />
+        {studentList.map((student) => (
+          <Student
+            fontSize={mediumHighFontSize}
+            name={student.name}
+            dre={student.dre}
+          />
+        ))}
         <View style={{ flexDirection: "row" }}>
           <Text
             style={{
@@ -144,10 +162,14 @@ function RecordPdf() {
             Assinatura
           </Text>
         </View>
-        <Committee fontSize={mediumHighFontSize} />
-        <Committee fontSize={mediumHighFontSize} />
-        <Committee fontSize={mediumHighFontSize} />
-        <Committee fontSize={mediumHighFontSize} />
+        {notStudentList.map((notStudent) => (
+          <Committee
+            fontSize={mediumHighFontSize}
+            name={notStudent.name}
+            advisor={!notStudent.coop && !notStudent.committee}
+            coadvisor={notStudent.coop}
+          />
+        ))}
         <Text
           style={{
             fontSize: mediumHighFontSize,
@@ -155,7 +177,7 @@ function RecordPdf() {
             marginTop: 30,
           }}
         >
-          Título: undefined
+          {`Título: ${project.title}`}
         </Text>
         <View style={{ flexDirection: "row", marginTop: 20 }}>
           <Text
@@ -165,7 +187,7 @@ function RecordPdf() {
               fontFamily: "Times-Roman",
             }}
           >
-            Data: undefined
+            {`Data: ${project.record.thesisDate}`}
           </Text>
           <Text
             style={{
@@ -175,7 +197,7 @@ function RecordPdf() {
               textAlign: "center",
             }}
           >
-            Início: undefined
+            {`Início: ${project.record.beginTime}`}
           </Text>
           <Text
             style={{
@@ -185,7 +207,7 @@ function RecordPdf() {
               textAlign: "right",
             }}
           >
-            Término: undefined
+            {`Término: ${project.record.endTime}`}
           </Text>
         </View>
         <Text
@@ -195,7 +217,7 @@ function RecordPdf() {
             marginTop: 5,
           }}
         >
-          Local: undefined
+          {`Local: ${project.record.location}`}
         </Text>
         <Text
           style={{

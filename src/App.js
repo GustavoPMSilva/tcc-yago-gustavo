@@ -72,7 +72,7 @@ function App() {
               <Route path="/users">
                 <UsersPage />
               </Route>
-              <Route path="/record">
+              <Route path="/record/:id">
                 <RecordPage />
               </Route>
               <Route>
