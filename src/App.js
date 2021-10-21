@@ -17,6 +17,7 @@ import SnackbarProvider from "react-simple-snackbar";
 import ProfilePage from "./pages/profile/ProfilePage";
 import { ForgotPasswordPage } from "./pages/forgotpassword";
 import UsersPage from "./pages/users/UsersPage";
+import RecordPage from "./pages/RecordPage";
 
 function App() {
   return (
@@ -70,6 +71,9 @@ function App() {
               </Route>
               <Route path="/users">
                 <UsersPage />
+              </Route>
+              <Route path="/record">
+                <RecordPage />
               </Route>
               <Route>
                 <NotFoundPage />
