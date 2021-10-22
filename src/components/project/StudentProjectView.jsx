@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Typography,
   Button,
@@ -12,6 +13,7 @@ import { ProjectStatus } from "../../models/project";
 
 function StudentProjectView({ project }) {
   const { apiPut } = useApi();
+  let history = useHistory();
   const [title, setTitle] = useState(project.title);
   const [subject, setSubject] = useState(project.subject);
   const [description, setDescription] = useState(project.description);
@@ -34,6 +36,10 @@ function StudentProjectView({ project }) {
     apiPut(`project/${project.id}/review`, null, () => {
       window.location.reload();
     });
+  }
+
+  function goToRecord() {
+    history.push(`/record/${project.id}`);
   }
 
   function showUserList() {
@@ -90,7 +96,8 @@ function StudentProjectView({ project }) {
           onChange={setKeywords}
         />
         {project.status === "IN_PROGRESS" ||
-        project.status === "TO_BE_PRESENTED" ? (
+        project.status === "TO_BE_PRESENTED" ||
+        project.status === "WAITING_SIGNATURES" ? (
           <GpfTextField
             id="file"
             label="Link para o documento do projeto"
@@ -114,14 +121,27 @@ function StudentProjectView({ project }) {
           Criado em: {project.registerDate}
         </Typography>
         <br />
-        <Button
-          variant="contained"
-          style={{ backgroundColor: "#5AAF4B" }}
-          type="submit"
-          fullWidth
-        >
-          Salvar
-        </Button>
+        {project.status === "STARTED" ||
+        project.status === "IN_PROGRESS" ||
+        project.status === "TO_BE_PRESENTED" ? (
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#5AAF4B" }}
+            type="submit"
+            fullWidth
+          >
+            Salvar
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#d9ba21" }}
+            onClick={goToRecord}
+            fullWidth
+          >
+            Ver ata
+          </Button>
+        )}
       </form>
       <br />
       {showUserList()}
