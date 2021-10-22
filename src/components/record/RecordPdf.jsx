@@ -31,6 +31,11 @@ function RecordPdf({ project }) {
     setNotStudentList(notStudentsSorted);
   }, []);
 
+  function formatDate(date) {
+    var chunks = date.split("-");
+    return `${chunks[2]}/${chunks[1]}/${chunks[0]}`;
+  }
+
   return (
     <Document>
       <Page
@@ -187,7 +192,7 @@ function RecordPdf({ project }) {
               fontFamily: "Times-Roman",
             }}
           >
-            {`Data: ${project.record.thesisDate}`}
+            {`Data: ${formatDate(project.record.thesisDate)}`}
           </Text>
           <Text
             style={{
@@ -237,7 +242,8 @@ function RecordPdf({ project }) {
             marginTop: 30,
           }}
         >
-          {`(X) Aprovação por unanimidade.`}
+          {project.record.evaluation === "PASSED" ? "(X)" : `(   )`} Aprovação
+          por unanimidade.
         </Text>
         <Text
           style={{
@@ -246,7 +252,14 @@ function RecordPdf({ project }) {
             marginTop: 5,
           }}
         >
-          {`(   ) Aprovação somente após fazer as exigências, no prazo de ___ dias.`}
+          {project.record.evaluation === "PASSED_WITH_MODIFICATIONS"
+            ? "(X)"
+            : `(   )`}{" "}
+          Aprovação somente após fazer as exigências, no prazo de{" "}
+          {project.record.evaluation === "PASSED_WITH_MODIFICATIONS"
+            ? project.evaluation.deadline
+            : `___`}{" "}
+          dias.
         </Text>
         <Text
           style={{
@@ -255,7 +268,7 @@ function RecordPdf({ project }) {
             marginTop: 5,
           }}
         >
-          {`(   ) Reprovação.`}
+          {project.record.evaluation === "FAILED" ? "(X)" : `(   )`} Reprovação.
         </Text>
         <Text
           style={{
@@ -264,7 +277,7 @@ function RecordPdf({ project }) {
             marginTop: 30,
           }}
         >
-          {`Grau obtido: undefined (undefined)`}
+          {`Grau obtido: ${project.record.grade} (${project.record.gradeDescription})`}
         </Text>
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <Text

@@ -1,7 +1,8 @@
 Ata
     OK Gerar PDF
     OK Gerar PDF da ata seguindo modelo
-        -> Falta pegar aprovação ou não e nota
+        OK -> Falta pegar aprovação ou não e nota
+    Trocar infos da ata de IM para IC
     Página para informações da ata
     Assinatura
     Mandar email pra geral pedindo assinatura
