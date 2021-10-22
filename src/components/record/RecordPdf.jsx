@@ -109,7 +109,7 @@ function RecordPdf({ project }) {
             marginTop: 12,
           }}
         >
-          {`Ata da ${project.record.thesisId} Defesa de Projeto Final do Curso de Bacharelado em Ciência da Computação.`}
+          {`Ata da ${project.record.thesisId}ª Defesa de Projeto Final do Curso de Bacharelado em Ciência da Computação.`}
         </Text>
         <View style={{ flexDirection: "row" }}>
           <Text

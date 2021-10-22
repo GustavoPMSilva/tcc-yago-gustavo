@@ -15,6 +15,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { useApi } from "../../contexts/ApiContext";
 import { AddParticipantToProject } from "../addparticipanttoproject";
 import { AlertDialog } from "../dialog";
+import RecordInfoDialog from "../record/RecordInfoDialog";
 
 function TeacherProjectView({ project }) {
   const { user, apiPost, apiPut, apiDelete } = useApi();
@@ -38,6 +39,17 @@ function TeacherProjectView({ project }) {
   const [openAddUser, setOpenAddUser] = useState(false);
   const [userToBeRemoved, setUserToBeRemoved] = useState(null);
   const [openDeleteProject, setOpenDeleteProject] = useState(false);
+
+  const [openRecordDataDialog, setOpenRecordDataDialog] = useState(false);
+
+  const handleClickOpenRecordDataDialog = () => {
+    setOpenRecordDataDialog(true);
+  };
+
+  const handleCloseRecordDataDialog = (success) => {
+    setOpenRecordDataDialog(false);
+    if (success) window.location.reload();
+  };
 
   const handleClickOpenAddUser = () => {
     setOpenAddUser(true);
@@ -262,11 +274,16 @@ function TeacherProjectView({ project }) {
           <Button
             variant="contained"
             style={{ backgroundColor: "#d9ba21" }}
-            type="submit"
+            onClick={handleClickOpenRecordDataDialog}
             fullWidth
           >
             Gerar ata
           </Button>
+          <RecordInfoDialog
+            open={openRecordDataDialog}
+            handleClose={handleCloseRecordDataDialog}
+            record={project.record}
+          />
         </>
       );
     }
