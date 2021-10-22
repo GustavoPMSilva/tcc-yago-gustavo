@@ -43,14 +43,14 @@ function RecordPdf({ project }) {
       >
         <Image
           style={{
-            marginTop: 35,
+            marginTop: 30,
             marginLeft: 50,
-            height: 25,
+            height: 45,
             width: 50,
             position: "absolute",
           }}
           src={{
-            uri: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Logo_IM_-_UFRJ.png",
+            uri: "https://avatars.githubusercontent.com/u/72049422",
             method: "GET",
             headers: {},
             body: "",
@@ -70,7 +70,7 @@ function RecordPdf({ project }) {
               fontWeight: "bold",
             }}
           >
-            INSTITUTO DE MATEMÁTICA
+            INSTITUTO DE COMPUTAÇÃO
           </Text>
           <Text
             style={{
@@ -79,7 +79,7 @@ function RecordPdf({ project }) {
               fontWeight: "bold",
             }}
           >
-            Departamento de Ciência da Computação
+            Departamento de Computação
           </Text>
         </View>
         <Text
@@ -90,7 +90,7 @@ function RecordPdf({ project }) {
             marginTop: 30,
           }}
         >
-          ATA DE DEFESA DE PROJETO FINAL
+          ATA DE DEFESA DE PROJETO FINAL DO CURSO
         </Text>
         <Text
           style={{
@@ -99,7 +99,7 @@ function RecordPdf({ project }) {
             fontFamily: "Times-Roman",
           }}
         >
-          DO CURSO DE CIÊNCIA DA COMPUTAÇÃO
+          DE BACHARELADO EM CIÊNCIA DA COMPUTAÇÃO
         </Text>
         <Text
           style={{
@@ -109,7 +109,7 @@ function RecordPdf({ project }) {
             marginTop: 12,
           }}
         >
-          {`Ata da ${project.record.thesisId} Defesa de Projeto Final do Curso de Ciência da Computação.`}
+          {`Ata da ${project.record.thesisId} Defesa de Projeto Final do Curso de Bacharelado em Ciência da Computação.`}
         </Text>
         <View style={{ flexDirection: "row" }}>
           <Text
@@ -288,7 +288,7 @@ function RecordPdf({ project }) {
             }}
           >
             {
-              "Universidade Federal do Rio de Janeiro\nCCMN - Instituto de Matemática - DCC"
+              "Universidade Federal do Rio de Janeiro\nCCMN - Instituto de Computação - DC"
             }
           </Text>
           <Text
@@ -299,9 +299,7 @@ function RecordPdf({ project }) {
               textAlign: "center",
             }}
           >
-            {
-              "Av. Athos da Silveira Ramos 274 - Ilha do Fundão\nCaixa Postal: 68530 - CEP: 21941-909"
-            }
+            {"Av. Athos da Silveira Ramos 274 - Ilha do Fundão"}
           </Text>
           <Text
             style={{
