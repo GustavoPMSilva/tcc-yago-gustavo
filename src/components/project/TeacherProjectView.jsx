@@ -259,32 +259,45 @@ function TeacherProjectView({ project }) {
     }
   }
 
+  function goToRecord() {
+    history.push(`/record/${project.id}`);
+  }
+
   function showRecordButton() {
     var projectUser = project.userList.find((u) => {
       return u.id === user.id;
     });
 
-    if (
-      !projectUser.committee &&
-      !projectUser.coop &&
-      project.status === "TO_BE_PRESENTED"
-    ) {
+    if (project.status === "TO_BE_PRESENTED") {
+      if (!projectUser.committee && !projectUser.coop) {
+        return (
+          <>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#d9ba21" }}
+              onClick={handleClickOpenRecordDataDialog}
+              fullWidth
+            >
+              Gerar ata
+            </Button>
+            <RecordInfoDialog
+              open={openRecordDataDialog}
+              handleClose={handleCloseRecordDataDialog}
+              record={project.record}
+            />
+          </>
+        );
+      }
+    } else if (status === "WAITING_SIGNATURES") {
       return (
-        <>
-          <Button
-            variant="contained"
-            style={{ backgroundColor: "#d9ba21" }}
-            onClick={handleClickOpenRecordDataDialog}
-            fullWidth
-          >
-            Gerar ata
-          </Button>
-          <RecordInfoDialog
-            open={openRecordDataDialog}
-            handleClose={handleCloseRecordDataDialog}
-            record={project.record}
-          />
-        </>
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#d9ba21" }}
+          onClick={goToRecord}
+          fullWidth
+        >
+          Ver ata
+        </Button>
       );
     }
   }
