@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "@react-pdf/renderer";
+import { Text, Image, View } from "@react-pdf/renderer";
 
 function Student({ fontSize, name, dre, signature }) {
   return (
@@ -13,14 +13,28 @@ function Student({ fontSize, name, dre, signature }) {
         >
           {`Nome: ${name}`}
         </Text>
-        <Text
-          style={{
-            fontSize: fontSize,
-            fontFamily: "Times-Roman",
-          }}
-        >
-          {`Assinatura: ${signature}`}
-        </Text>
+        <View style={{ flexDirection: "row" }}>
+          <Text
+            style={{
+              fontSize: fontSize,
+              fontFamily: "Times-Roman",
+            }}
+          >
+            Assinatura:&nbsp;
+          </Text>
+          {signature === null ? (
+            <></>
+          ) : (
+            <Image
+              style={{
+                height: 25,
+                minWidth: 50,
+                maxWidth: 250,
+              }}
+              src={signature}
+            />
+          )}
+        </View>
       </View>
       <Text
         style={{

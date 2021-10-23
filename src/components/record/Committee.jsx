@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "@react-pdf/renderer";
+import { Text, Image, View } from "@react-pdf/renderer";
 
 function Committee({ fontSize, name, advisor, coadvisor, signature }) {
   return (
@@ -16,14 +16,18 @@ function Committee({ fontSize, name, advisor, coadvisor, signature }) {
           advisor ? "(ORIENTADOR)" : coadvisor ? "(CO-ORIENTADOR)" : ""
         }`}
       </Text>
-      <Text
-        style={{
-          fontSize: fontSize,
-          fontFamily: "Times-Roman",
-        }}
-      >
-        {`${signature}`}
-      </Text>
+      {signature === null ? (
+        <></>
+      ) : (
+        <Image
+          style={{
+            height: 30,
+            minWidth: 60,
+            maxWidth: 300,
+          }}
+          src={signature}
+        />
+      )}
     </View>
   );
 }

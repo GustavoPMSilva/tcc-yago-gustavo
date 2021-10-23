@@ -39,7 +39,7 @@ function RecordPdf({ project }) {
   return (
     <Document>
       <Page
-        style={{ paddingTop: 35, paddingBottom: 65, paddingHorizontal: 50 }}
+        style={{ paddingTop: 35, paddingBottom: 50, paddingHorizontal: 50 }}
       >
         <Image
           style={{
@@ -87,7 +87,7 @@ function RecordPdf({ project }) {
             fontSize: mediumFontSize,
             textAlign: "center",
             fontFamily: "Times-Roman",
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           ATA DE DEFESA DE PROJETO FINAL DO CURSO
@@ -139,6 +139,7 @@ function RecordPdf({ project }) {
             fontSize={mediumHighFontSize}
             name={student.name}
             dre={student.dre}
+            signature={student.signature}
           />
         ))}
         <View style={{ flexDirection: "row" }}>
@@ -173,13 +174,14 @@ function RecordPdf({ project }) {
             name={notStudent.name}
             advisor={!notStudent.coop && !notStudent.committee}
             coadvisor={notStudent.coop}
+            signature={notStudent.signature}
           />
         ))}
         <Text
           style={{
             fontSize: mediumHighFontSize,
             fontFamily: "Times-Roman",
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           {`Título: ${project.title}`}
@@ -228,7 +230,7 @@ function RecordPdf({ project }) {
           style={{
             fontSize: mediumHighFontSize,
             fontFamily: "Times-Roman",
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           Em sessão pública, após exposição do trabalho, o(s) candidato(s)
@@ -239,7 +241,7 @@ function RecordPdf({ project }) {
           style={{
             fontSize: mediumHighFontSize,
             fontFamily: "Times-Roman",
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           {project.record.evaluation === "PASSED" ? "(X)" : `(   )`} Aprovação
@@ -274,12 +276,12 @@ function RecordPdf({ project }) {
           style={{
             fontSize: mediumHighFontSize,
             fontFamily: "Times-Roman",
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           {`Grau obtido: ${project.record.grade} (${project.record.gradeDescription})`}
         </Text>
-        <View style={{ flexDirection: "row", marginTop: 30 }}>
+        <View style={{ flexDirection: "row", marginTop: 20 }}>
           <Text
             style={{
               flex: 1,

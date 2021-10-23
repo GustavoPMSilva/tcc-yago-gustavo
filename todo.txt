@@ -4,7 +4,9 @@ Ata
         OK -> Falta pegar aprovação ou não e nota
     OK Trocar infos da ata de IM para IC
     OK Página para informações da ata
-    Assinatura
+    OK Assinatura: https://www.npmjs.com/package/react-signature-canvas
+    Alterar projeto para finalizado quando todos assinarem automagicamente
+    Não deixar banca salvar alterações no projeto
     Mandar email pra geral pedindo assinatura
     Orientador ver ata em página de projeto finalizado
 
