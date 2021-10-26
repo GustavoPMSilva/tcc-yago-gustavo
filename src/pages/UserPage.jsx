@@ -10,16 +10,22 @@ function UserPage() {
   let history = useHistory();
   const { id } = useParams();
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    apiGet(`public/user/${id}`, setUser).catch(() => {
+    apiGet(`public/user/${id}`, (data) => {
+      setUser(data);
+      setLoading(false);
+    }).catch(() => {
       history.push("/404");
     });
   }, []);
 
   return (
     <Container component="article">
-      {user.userType === "STUDENT" ? (
+      {loading ? (
+        <p>Loading</p>
+      ) : user.userType === "STUDENT" ? (
         <StudentUserView user={user} />
       ) : (
         <TeacherUserView user={user} />

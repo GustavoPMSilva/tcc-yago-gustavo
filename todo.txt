@@ -1,10 +1,4 @@
-Página de usuário (público) não mostra áreas de interesse
-    vindo vazio do back
-    chamando link privado
-
 FUTURO - Adicionar manual - Como utilizar a plataforma.
-
-
 
 
 OK Perfil
@@ -99,3 +93,6 @@ OK Ata
 OK Projeto
     OK Criado em: formatar data
 
+OK Página de usuário (público) não mostra áreas de interesse
+    OK vindo vazio do back
+    OK chamando link privado

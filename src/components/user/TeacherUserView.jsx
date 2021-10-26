@@ -18,7 +18,7 @@ function TeacherUserView({ user }) {
       setFieldOfInterestList(data);
     }
 
-    apiGet("user/fields", onFieldOfInterestListLoaded, undefined);
+    apiGet(`public/user/${user.id}/fields`, onFieldOfInterestListLoaded);
   }, []);
 
   function showFieldOfInterestList() {
@@ -33,7 +33,7 @@ function TeacherUserView({ user }) {
               <ListItem
                 key={f.id}
                 component={Link}
-                to={`/field/${f.id}`}
+                to={`/public/field/${f.id}/users?name=${f.name}`}
                 disableGutters
               >
                 <ListItemText primary={f.name} />
