@@ -20,13 +20,18 @@ function ProjectPage() {
     function onProjectLoaded(data) {
       console.log(data);
 
-      if (data.status === "ENDED") {
-        history.push(`/public/project/${data.id}`);
-      } else if (data.status === "CANCELED") {
-        history.push("/404");
-      } else {
+      if (user.userType === "TEACHER" && !user.committee && !user.coop) {
         setProject(data);
         setLoading(false);
+      } else {
+        if (data.status === "ENDED") {
+          history.push(`/public/project/${data.id}`);
+        } else if (data.status === "CANCELED") {
+          history.push("/404");
+        } else {
+          setProject(data);
+          setLoading(false);
+        }
       }
     }
 
