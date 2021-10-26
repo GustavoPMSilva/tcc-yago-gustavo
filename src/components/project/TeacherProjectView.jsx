@@ -302,6 +302,29 @@ function TeacherProjectView({ project }) {
     }
   }
 
+  function showSaveButton() {
+    var projectUser = project.userList.find((u) => {
+      return u.id === user.id;
+    });
+
+    if (
+      projectUser.userType === "TEACHER" &&
+      !projectUser.committee &&
+      !projectUser.coop
+    ) {
+      return (
+        <Button
+          variant="contained"
+          style={{ backgroundColor: "#5AAF4B" }}
+          type="submit"
+          fullWidth
+        >
+          Salvar
+        </Button>
+      );
+    }
+  }
+
   return (
     <>
       <form
@@ -365,14 +388,7 @@ function TeacherProjectView({ project }) {
           Criado em: {project.registerDate}
         </Typography>
         <br />
-        <Button
-          variant="contained"
-          style={{ backgroundColor: "#5AAF4B" }}
-          type="submit"
-          fullWidth
-        >
-          Salvar
-        </Button>
+        {showSaveButton()}
       </form>
       <br />
       {showRecordButton()}
