@@ -7,7 +7,7 @@ Ata
     OK Assinatura: https://www.npmjs.com/package/react-signature-canvas
     OK Não deixar banca salvar alterações no projeto
     OK Alterar projeto para finalizado quando todos assinarem automagicamente
-    Orientador ver ata em página de projeto finalizado
+    OK Orientador ver ata em página de projeto finalizado
     Mandar email pra geral pedindo assinatura
 
 Projeto

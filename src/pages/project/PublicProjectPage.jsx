@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { useApi } from "../../contexts/ApiContext";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography, Button } from "@material-ui/core";
 import UserList from "../../components/UserList";
 
 function PublicProjectPage() {
-  const { apiGet } = useApi();
+  const { signed, user, apiGet } = useApi();
   let history = useHistory();
   const { id } = useParams();
   const [project, setProject] = useState({});
@@ -24,6 +24,35 @@ function PublicProjectPage() {
 
     apiGet(`public/project/${id}`, onProjectLoaded, onError);
   }, []);
+
+  function goToRecord() {
+    history.push(`/record/${project.id}`);
+  }
+
+  function showRecordButton() {
+    if (signed) {
+      var projectUser = project.userList.find((u) => {
+        return u.id === user.id;
+      });
+
+      if (
+        projectUser.userType === "TEACHER" &&
+        !projectUser.committee &&
+        !projectUser.coop
+      ) {
+        return (
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#d9ba21" }}
+            onClick={goToRecord}
+            fullWidth
+          >
+            Ver ata
+          </Button>
+        );
+      }
+    }
+  }
 
   return (
     <Container component="article">
@@ -58,6 +87,8 @@ function PublicProjectPage() {
             Participantes
           </Typography>
           <UserList userList={project.userList} />
+          <br />
+          {showRecordButton()}
         </>
       )}
     </Container>
