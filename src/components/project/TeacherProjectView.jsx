@@ -288,7 +288,10 @@ function TeacherProjectView({ project }) {
           </>
         );
       }
-    } else if (status === "WAITING_SIGNATURES") {
+    } else if (
+      project.status === "WAITING_SIGNATURES" ||
+      project.status === "ENDED"
+    ) {
       return (
         <Button
           variant="contained"
@@ -323,6 +326,12 @@ function TeacherProjectView({ project }) {
         </Button>
       );
     }
+  }
+
+  function formatDate(date) {
+    var chunks = date.split("T");
+    var dateChunks = chunks[0].split("-");
+    return `${dateChunks[2]}/${dateChunks[1]}/${dateChunks[0]}`;
   }
 
   return (
@@ -385,7 +394,7 @@ function TeacherProjectView({ project }) {
         />
         <br />
         <Typography variant="body1">
-          Criado em: {project.registerDate}
+          Criado em: {formatDate(project.registerDate)}
         </Typography>
         <br />
         {showSaveButton()}

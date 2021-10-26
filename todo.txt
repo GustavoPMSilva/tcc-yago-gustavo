@@ -1,18 +1,3 @@
-Ata
-    OK Gerar PDF
-    OK Gerar PDF da ata seguindo modelo
-        OK -> Falta pegar aprovação ou não e nota
-    OK Trocar infos da ata de IM para IC
-    OK Página para informações da ata
-    OK Assinatura: https://www.npmjs.com/package/react-signature-canvas
-    OK Não deixar banca salvar alterações no projeto
-    OK Alterar projeto para finalizado quando todos assinarem automagicamente
-    OK Orientador ver ata em página de projeto finalizado
-    Mandar email pra geral pedindo assinatura
-
-Projeto
-    Criado em: formatar data
-
 Página de usuário (público) não mostra áreas de interesse
     vindo vazio do back
     chamando link privado
@@ -98,3 +83,19 @@ OK Criar um status de pronto para defesa (to_be_presented)
     OK Perguntar data e hora
     OK Mandar email pra geral
     OK Liberar botão gerar ata para orientador (para ser feito depois da defesa de fato)
+
+OK Ata
+    OK Gerar PDF
+    OK Gerar PDF da ata seguindo modelo
+        OK -> Falta pegar aprovação ou não e nota
+    OK Trocar infos da ata de IM para IC
+    OK Página para informações da ata
+    OK Assinatura: https://www.npmjs.com/package/react-signature-canvas
+    OK Não deixar banca salvar alterações no projeto
+    OK Alterar projeto para finalizado quando todos assinarem automagicamente
+    OK Orientador ver ata em página de projeto finalizado
+    OK Mandar email pra geral pedindo assinatura
+
+OK Projeto
+    OK Criado em: formatar data
+

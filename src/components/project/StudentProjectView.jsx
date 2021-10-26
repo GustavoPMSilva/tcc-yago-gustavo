@@ -20,6 +20,12 @@ function StudentProjectView({ project }) {
   const [keywords, setKeywords] = useState(project.keywords);
   const [file, setFile] = useState(project.file);
 
+  function formatDate(date) {
+    var chunks = date.split("T");
+    var dateChunks = chunks[0].split("-");
+    return `${dateChunks[2]}/${dateChunks[1]}/${dateChunks[0]}`;
+  }
+
   function saveChanges() {
     project.title = title;
     project.subject = subject;
@@ -118,7 +124,7 @@ function StudentProjectView({ project }) {
           Status: {ProjectStatus[project.status]}
         </Typography>
         <Typography variant="body1">
-          Criado em: {project.registerDate}
+          Criado em: {formatDate(project.registerDate)}
         </Typography>
         <br />
         {project.status === "STARTED" ||
