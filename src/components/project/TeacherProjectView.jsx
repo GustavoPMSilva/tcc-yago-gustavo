@@ -46,9 +46,14 @@ function TeacherProjectView({ project }) {
     setOpenRecordDataDialog(true);
   };
 
-  const handleCloseRecordDataDialog = (success) => {
+  const handleCloseRecordDataDialog = (record) => {
     setOpenRecordDataDialog(false);
-    if (success) window.location.reload();
+    console.log(record);
+    if (record != null) {
+      apiPut(`record/${record.id}`, record, () => {
+        window.location.reload();
+      });
+    }
   };
 
   const handleClickOpenAddUser = () => {
@@ -124,9 +129,16 @@ function TeacherProjectView({ project }) {
 
     console.log(project);
 
-    apiPut(`project/${project.id}`, project, undefined, (error) => {
-      window.location.reload();
-    });
+    apiPut(
+      `project/${project.id}`,
+      project,
+      () => {
+        window.location.reload();
+      },
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   function showUserList() {
@@ -143,9 +155,8 @@ function TeacherProjectView({ project }) {
           {project.userList.map((u) => (
             <ListItem key={u.id} disableGutters>
               <ListItemText primary={u.name} />
-              {!projectUser.committee &&
-              !projectUser.coop &&
-              u.id !== projectUser.id ? (
+              {u.id !== projectUser.id &&
+              (u.userType !== "TEACHER" || u.coop || u.committee) ? (
                 <ListItemSecondaryAction>
                   <IconButton
                     edge="end"
@@ -162,7 +173,7 @@ function TeacherProjectView({ project }) {
               )}
             </ListItem>
           ))}
-          {!projectUser.committee && !projectUser.coop ? (
+          {!projectUser.committee ? (
             <ListItem disableGutters>
               <Button
                 variant="contained"
@@ -269,7 +280,7 @@ function TeacherProjectView({ project }) {
     });
 
     if (project.status === "TO_BE_PRESENTED") {
-      if (!projectUser.committee && !projectUser.coop) {
+      if (!projectUser.committee) {
         return (
           <>
             <Button
@@ -310,11 +321,7 @@ function TeacherProjectView({ project }) {
       return u.id === user.id;
     });
 
-    if (
-      projectUser.userType === "TEACHER" &&
-      !projectUser.committee &&
-      !projectUser.coop
-    ) {
+    if (projectUser.userType === "TEACHER" && !projectUser.committee) {
       return (
         <Button
           variant="contained"

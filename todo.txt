@@ -96,3 +96,9 @@ OK Projeto
 OK Página de usuário (público) não mostra áreas de interesse
     OK vindo vazio do back
     OK chamando link privado
+
+OK back -> alterar unauthorized pra badrequest
+
+OK Esconder dialogs no loading
+
+OK coop ter mesmos poderes do op menos remover o op
