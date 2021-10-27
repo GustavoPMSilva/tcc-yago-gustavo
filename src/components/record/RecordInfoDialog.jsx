@@ -9,11 +9,9 @@ import {
 } from "@material-ui/core";
 import GpfTextField from "../core/GpfTextfield";
 import GpfSelect from "../core/GpfSelect";
-import { useApi } from "../../contexts/ApiContext";
 import { RecordEvaluation } from "../../models/record";
 
 function RecordInfoDialog({ open, handleClose, record }) {
-  const { apiPut } = useApi();
   const [thesisId, setThesisId] = useState("");
   const [thesisDate, setThesisDate] = useState("");
   const [beginTime, setBeginTime] = useState("");
@@ -35,9 +33,7 @@ function RecordInfoDialog({ open, handleClose, record }) {
     record.grade = grade.replace(",", ".");
     record.gradeDescription = gradeDescription;
 
-    apiPut(`record/${record.id}`, record, () => {
-      handleClose(true);
-    });
+    handleClose(record);
   }
 
   return (
@@ -46,7 +42,7 @@ function RecordInfoDialog({ open, handleClose, record }) {
         open={open}
         onClose={(event) => {
           event.stopPropagation();
-          handleClose(false);
+          handleClose(null);
         }}
         fullWidth
       >
@@ -146,7 +142,7 @@ function RecordInfoDialog({ open, handleClose, record }) {
             color="primary"
             onClick={(event) => {
               event.preventDefault();
-              handleClose(false);
+              handleClose(null);
             }}
             fullWidth
           >
