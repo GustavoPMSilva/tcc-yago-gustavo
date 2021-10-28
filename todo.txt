@@ -1,4 +1,46 @@
-FUTURO - Adicionar manual - Como utilizar a plataforma.
+Adicionar manual - Como utilizar a plataforma.
+    Login
+    Esqueci minha senha
+    Área pública
+        Ver projetos finalizados
+        Ver áreas de interesse
+        Ver dados dos professores
+    Professor Externo
+        Editar perfil
+        Trocar senha
+        Ver projeto final
+        Assinar
+    Estudante
+        Editar perfil
+        Trocar senha
+        Ver projeto final
+        Assinar
+
+        Editar projeto final
+        Submeter revisão (botão)
+    Professor
+        Editar perfil
+        Trocar senha
+        Ver projeto final
+        Assinar
+        Editar projeto final
+
+        Submeter revisado (botão)
+
+        Convidar usuários
+        Desativar usuário
+        Ativar usuário
+        Criar área de interesse
+        Editar área de interesse
+        Incluir área de interesse (nele)
+        Remover área de interesse (dele)
+        Criar projeto final
+        Adicionar participantes
+        Marcar defesa
+        Gera ata
+        Ver ata
+        
+
 
 
 OK Perfil

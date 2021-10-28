@@ -20,7 +20,11 @@ function ProjectPage() {
     function onProjectLoaded(data) {
       console.log(data);
 
-      if (user.userType === "TEACHER" && !user.committee && !user.coop) {
+      var projectUser = project.userList.find((u) => {
+        return u.id === user.id;
+      });
+
+      if (projectUser.userType === "TEACHER" && !projectUser.committee) {
         setProject(data);
         setLoading(false);
       } else {
