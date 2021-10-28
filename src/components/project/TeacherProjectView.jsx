@@ -156,7 +156,7 @@ function TeacherProjectView({ project }) {
             <ListItem key={u.id} disableGutters>
               <ListItemText primary={u.name} />
               {u.id !== projectUser.id &&
-              projectUser.type === "TEACHER" &&
+              projectUser.userType === "TEACHER" &&
               !projectUser.committee &&
               (u.userType !== "TEACHER" || u.coop || u.committee) ? (
                 <ListItemSecondaryAction>
