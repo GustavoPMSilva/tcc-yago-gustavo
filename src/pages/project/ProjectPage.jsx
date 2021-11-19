@@ -20,7 +20,7 @@ function ProjectPage() {
     function onProjectLoaded(data) {
       console.log(data);
 
-      var projectUser = project.userList.find((u) => {
+      var projectUser = data.userList.find((u) => {
         return u.id === user.id;
       });
 
