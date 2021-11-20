@@ -7,12 +7,13 @@ Adicionar manual - Como utilizar a plataforma.
     OK Esqueci minha senha
     OK Editar perfil
     OK Trocar senha
-    Homepage
+    OK Homepage
         Ver lista projetos finais
         Ver suas áreas de interesse (Professor)
         Criar área de interesse (Professor)
         Incluir área de interesse (nele) (Professor)
         Remover área de interesse (dele) (Professor)
+    Criar projeto final (Professor)
     Editar projeto final (só estudante e professor)
         Revisão de texto (estudante revisão, professor revisado)
         Adicionar participantes (Professor)
@@ -30,7 +31,6 @@ Adicionar manual - Como utilizar a plataforma.
         Desativar usuário
         Ativar usuário
         Editar área de interesse
-        Criar projeto final
 
 
 
