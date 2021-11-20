@@ -10,7 +10,19 @@ import {
   TableHead,
 } from "@material-ui/core";
 
-function UserList({ userList }) {
+function UserList({ userList, showRole }) {
+  function getUserRole(user) {
+    switch (user.userType) {
+      case "STUDENT":
+        return "Estudante";
+      default: {
+        if (user.coop) return "Co-Orientador";
+        else if (user.committee) return "Banca";
+        else return "Orientador";
+      }
+    }
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -24,7 +36,9 @@ function UserList({ userList }) {
           {userList.map((user) => (
             <TableRow key={user.id}>
               <TableCell component="th" scope="row">
-                <Link to={`/user/${user.id}`}>{user.name}</Link>
+                <Link to={`/user/${user.id}`}>{`${user.name}${
+                  showRole ? ` (${getUserRole(user)})` : ""
+                }`}</Link>
               </TableCell>
               <TableCell align="right">{user.userProfile}</TableCell>
             </TableRow>

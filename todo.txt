@@ -1,32 +1,25 @@
 Adicionar manual - Como utilizar a plataforma.
-    Login
-    Esqueci minha senha
     Área pública
         Ver projetos finalizados
         Ver áreas de interesse
         Ver dados dos professores
+
+    Login
+    Esqueci minha senha
+    Editar perfil
+    Trocar senha
+    Ver projeto final
+    Assinar
+
+    Editar projeto final (só estudante e professor)
+
+    Revisão de texto (estudante revisão, professor revisado)
+    
     Professor Externo
-        Editar perfil
-        Trocar senha
-        Ver projeto final
-        Assinar
+        
     Estudante
-        Editar perfil
-        Trocar senha
-        Ver projeto final
-        Assinar
-
-        Editar projeto final
-        Submeter revisão (botão)
+        
     Professor
-        Editar perfil
-        Trocar senha
-        Ver projeto final
-        Assinar
-        Editar projeto final
-
-        Submeter revisado (botão)
-
         Convidar usuários
         Desativar usuário
         Ativar usuário

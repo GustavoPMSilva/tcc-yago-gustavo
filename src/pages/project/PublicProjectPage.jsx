@@ -86,7 +86,7 @@ function PublicProjectPage() {
           <Typography variant="h4" component="h1" align="center">
             Participantes
           </Typography>
-          <UserList userList={project.userList} />
+          <UserList userList={project.userList} showRole />
           <br />
           {showRecordButton()}
         </>
