@@ -1,19 +1,25 @@
 Adicionar manual - Como utilizar a plataforma.
-    Área pública
+    OK Área pública
         Ver projetos finalizados
         Ver áreas de interesse
         Ver dados dos professores
-
-    Login
-    Esqueci minha senha
-    Editar perfil
-    Trocar senha
-    Ver projeto final
-    Assinar
-
+    OK Login
+    OK Esqueci minha senha
+    OK Editar perfil
+    OK Trocar senha
+    Homepage
+        Ver lista projetos finais
+        Ver suas áreas de interesse (Professor)
+        Criar área de interesse (Professor)
+        Incluir área de interesse (nele) (Professor)
+        Remover área de interesse (dele) (Professor)
     Editar projeto final (só estudante e professor)
-
-    Revisão de texto (estudante revisão, professor revisado)
+        Revisão de texto (estudante revisão, professor revisado)
+        Adicionar participantes (Professor)
+        Marcar defesa (Professor)
+        Gera ata (Professor)
+        Ver ata (Professor)
+    Assinar
     
     Professor Externo
         
@@ -23,16 +29,8 @@ Adicionar manual - Como utilizar a plataforma.
         Convidar usuários
         Desativar usuário
         Ativar usuário
-        Criar área de interesse
         Editar área de interesse
-        Incluir área de interesse (nele)
-        Remover área de interesse (dele)
         Criar projeto final
-        Adicionar participantes
-        Marcar defesa
-        Gera ata
-        Ver ata
-        
 
 
 
