@@ -15,13 +15,13 @@ Adicionar manual - Como utilizar a plataforma.
         Remover área de interesse (dele) (Professor)
     OK Criar projeto final (Professor)
     Ver projeto final
-    Editar projeto final (só estudante e professor)
-        Revisão de texto (estudante revisão, professor revisado)
-        Adicionar participantes (Professor)
-        Marcar defesa (Professor)
-        Gera ata (Professor)
-        Ver ata (Professor)
-    Assinar
+        Editar projeto final (só estudante e professor)
+        Revisão de texto (estudante revisão, Orientador e Co revisado)
+        Adicionar participantes (Orientador e Co)
+        Marcar defesa (Orientador e Co)
+        Gera ata (Orientador e Co)
+        Ver ata (Orientador e Co)
+        Assinar
     Convidar usuários (Professor)
     Desativar/Ativar usuário (Professor)
     Editar área de interesse (Professor)
