@@ -16,6 +16,7 @@ import { useApi } from "../../contexts/ApiContext";
 import { AddParticipantToProject } from "../addparticipanttoproject";
 import { AlertDialog } from "../dialog";
 import RecordInfoDialog from "../record/RecordInfoDialog";
+import { UserType } from "../../models/user";
 
 function TeacherProjectView({ project }) {
   const { user, apiPost, apiPut, apiDelete } = useApi();
@@ -154,7 +155,7 @@ function TeacherProjectView({ project }) {
         <List>
           {project.userList.map((u) => (
             <ListItem key={u.id} disableGutters>
-              <ListItemText primary={u.name} />
+              <ListItemText primary={`${u.name} (${UserType[u.userType]})`} />
               {u.id !== projectUser.id &&
               projectUser.userType === "TEACHER" &&
               !projectUser.committee &&

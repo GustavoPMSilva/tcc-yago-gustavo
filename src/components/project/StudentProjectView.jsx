@@ -10,6 +10,7 @@ import {
 import { GpfTextField } from "../core";
 import { useApi } from "../../contexts/ApiContext";
 import { ProjectStatus } from "../../models/project";
+import { UserType } from "../../models/user";
 
 function StudentProjectView({ project }) {
   const { apiPut } = useApi();
@@ -57,7 +58,7 @@ function StudentProjectView({ project }) {
         <List>
           {project.userList.map((u) => (
             <ListItem key={u.id} disableGutters>
-              <ListItemText primary={u.name} />
+              <ListItemText primary={`${u.name} (${UserType[u.userType]})`} />
             </ListItem>
           ))}
         </List>

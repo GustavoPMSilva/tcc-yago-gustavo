@@ -21,7 +21,7 @@ function RegisterPage() {
       history.push("/404");
     }
 
-    apiGet(`user?token=${token}`, onUserLoaded, onError);
+    apiGet(`public/user?token=${token}`, onUserLoaded, onError);
   }, []);
 
   function onSubmitDone() {
