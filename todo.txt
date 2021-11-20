@@ -13,7 +13,8 @@ Adicionar manual - Como utilizar a plataforma.
         Criar área de interesse (Professor)
         Incluir área de interesse (nele) (Professor)
         Remover área de interesse (dele) (Professor)
-    Criar projeto final (Professor)
+    OK Criar projeto final (Professor)
+    Ver projeto final
     Editar projeto final (só estudante e professor)
         Revisão de texto (estudante revisão, professor revisado)
         Adicionar participantes (Professor)
@@ -21,17 +22,9 @@ Adicionar manual - Como utilizar a plataforma.
         Gera ata (Professor)
         Ver ata (Professor)
     Assinar
-    
-    Professor Externo
-        
-    Estudante
-        
-    Professor
-        Convidar usuários
-        Desativar usuário
-        Ativar usuário
-        Editar área de interesse
-
+    Convidar usuários (Professor)
+    Desativar/Ativar usuário (Professor)
+    Editar área de interesse (Professor)
 
 
 OK Perfil
