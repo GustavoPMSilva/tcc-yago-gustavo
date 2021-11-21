@@ -12,7 +12,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 function UsersPage() {
-  const { apiGet, apiPut } = useApi();
+  const { user, apiGet, apiPut } = useApi();
   const history = useHistory();
   const [userList, setUserList] = useState([]);
 
@@ -49,33 +49,40 @@ function UsersPage() {
         Usuários
       </Typography>
       <List>
-        {userList.map((user) => (
-          <ListItem key={user.id} disableGutters>
+        {userList.map((u) => (
+          <ListItem key={u.id} disableGutters>
             <Grid container spacing={1}>
               <Grid item xs>
-                <Link to={`/user/${user.id}`}>{user.name}</Link>
+                <Link to={`/user/${u.id}`}>{u.name}</Link>
               </Grid>
               <Grid item alignItems="stretch" style={{ display: "flex" }}>
-                {user.status === "ACTIVE" ? (
-                  <Button
-                    variant="contained"
-                    style={{ backgroundColor: "#eb2915" }}
-                    onClick={(event) => {
-                      deactivateUser(user);
-                    }}
-                  >
-                    Desativar
-                  </Button>
+                {u.id !== user.id ? (
+                  u.status === "ACTIVE" ? (
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#eb2915" }}
+                      onClick={(event) => {
+                        deactivateUser(u);
+                      }}
+                    >
+                      Desativar
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#5AAF4B" }}
+                      onClick={(event) => {
+                        activateUser(u);
+                      }}
+                    >
+                      Ativar
+                    </Button>
+                  )
                 ) : (
-                  <Button
-                    variant="contained"
-                    style={{ backgroundColor: "#5AAF4B" }}
-                    onClick={(event) => {
-                      activateUser(user);
-                    }}
-                  >
-                    Ativar
-                  </Button>
+                  <>
+                    <br />
+                    <br />
+                  </>
                 )}
               </Grid>
             </Grid>

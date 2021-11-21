@@ -8,23 +8,23 @@ Adicionar manual - Como utilizar a plataforma.
     OK Editar perfil
     OK Trocar senha
     OK Homepage
-        Ver lista projetos finais
-        Ver suas áreas de interesse (Professor)
-        Criar área de interesse (Professor)
-        Incluir área de interesse (nele) (Professor)
-        Remover área de interesse (dele) (Professor)
+        OK Ver lista projetos finais
+        OK Ver suas áreas de interesse (Professor)
+        OK Criar área de interesse (Professor)
+        OK Incluir área de interesse (nele) (Professor)
+        OK Remover área de interesse (dele) (Professor)
     OK Criar projeto final (Professor)
-    Ver projeto final
-        Editar projeto final (só estudante e professor)
-        Revisão de texto (estudante revisão, Orientador e Co revisado)
-        Adicionar participantes (Orientador e Co)
-        Marcar defesa (Orientador e Co)
-        Gera ata (Orientador e Co)
-        Ver ata (Orientador e Co)
-        Assinar
-    Convidar usuários (Professor)
-    Desativar/Ativar usuário (Professor)
-    Editar área de interesse (Professor)
+    OK Ver projeto final
+        OK Editar projeto final (só estudante e professor)
+        OK Revisão de texto (estudante revisão, Professor revisado)
+        OK Adicionar participantes (Professor)
+        OK Marcar defesa (Professor)
+    OK Gera ata (Professor)
+    OK Ver ata (Professor)
+        OK Assinar
+    OK Convidar usuários (Professor)
+    OK Desativar/Ativar usuário (Professor)
+    OK Editar área de interesse (Professor)
 
 
 OK Perfil
