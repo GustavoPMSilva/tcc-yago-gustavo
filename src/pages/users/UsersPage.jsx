@@ -28,18 +28,14 @@ function UsersPage() {
   }
 
   function activateUser(user) {
-    user.status = "ACTIVE";
-    updateUser(user);
+    apiPut(`user/${user.id}/activate`, null, () => {
+      window.location.reload();
+    });
   }
 
   function deactivateUser(user) {
-    user.status = "INACTIVE";
-    updateUser(user);
-  }
-
-  function updateUser(user) {
-    apiPut(`user/${user.id}`, user, () => {
-      //window.location.reload();
+    apiPut(`user/${user.id}/deactivate`, null, () => {
+      window.location.reload();
     });
   }
 
