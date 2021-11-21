@@ -39,7 +39,7 @@ function ForgotPasswordPage() {
   return (
     <Container component="article">
       <Typography variant="h3" component="h1" align="center">
-        Registro
+        Nova Senha
       </Typography>
       <form
         onSubmit={(event) => {

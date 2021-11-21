@@ -25,7 +25,7 @@ Adicionar manual - Como utilizar a plataforma.
     OK Convidar usuários (Professor)
     OK Desativar/Ativar usuário (Professor)
     OK Editar área de interesse (Professor)
-    Registro
+    OK Registro
 
 
 OK Perfil
