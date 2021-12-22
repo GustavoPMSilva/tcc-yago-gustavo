@@ -124,6 +124,7 @@ export const ApiProvider = ({ children }) => {
         apiPost,
         apiPut,
         apiDelete,
+        errorSnackbar,
       }}
     >
       <LoadingOverlay active={loading} spinner>

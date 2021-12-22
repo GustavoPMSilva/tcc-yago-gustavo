@@ -12,7 +12,7 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 function UsersPage() {
-  const { user, apiGet, apiPut } = useApi();
+  const { user, apiGet, apiPut, errorSnackbar } = useApi();
   const history = useHistory();
   const [userList, setUserList] = useState([]);
 
@@ -34,9 +34,13 @@ function UsersPage() {
   }
 
   function deactivateUser(user) {
-    apiPut(`user/${user.id}/deactivate`, null, () => {
-      window.location.reload();
-    });
+    if (user.hasUnfinishedProject) {
+      errorSnackbar("Este usuário está vinculado a projeto(s) ativo(s)");
+    } else {
+      apiPut(`user/${user.id}/deactivate`, null, () => {
+        window.location.reload();
+      });
+    }
   }
 
   return (
