@@ -259,7 +259,7 @@ function RecordPdf({ project }) {
             : `(   )`}{" "}
           Aprovação somente após fazer as exigências, no prazo de{" "}
           {project.record.evaluation === "PASSED_WITH_MODIFICATIONS"
-            ? project.evaluation.deadline
+            ? project.record.deadline
             : `___`}{" "}
           dias.
         </Text>
