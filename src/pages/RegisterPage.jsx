@@ -29,7 +29,7 @@ function RegisterPage() {
   }
 
   function doSubmit(updatedUser) {
-    apiPut(`user/${updatedUser.id}`, updatedUser, onSubmitDone);
+    apiPut(`public/user/${updatedUser.id}`, updatedUser, onSubmitDone);
   }
 
   return (
